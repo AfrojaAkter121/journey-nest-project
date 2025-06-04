@@ -1,0 +1,10 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+.active{
+    color: rgb(3, 49, 3);
+    background: #d0e450 ;
+    padding: 7px 20px ;
+    border-radius: 100px;
+    font-style: italic;
+}
