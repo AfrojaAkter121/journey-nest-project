@@ -64,7 +64,10 @@ export default function Navbar() {
     transition={{duration:2}}>
       <div className="max-w-7xl mx-auto flex justify-between items-center px-4 py-2 rounded-lg ">
         {/* Left: Logo */}
-        <div
+        <motion.div
+          initial={{scale: [1, 0.9, 1]}}
+          animate={{scale: [0.9, 1, 0.9]}}
+          transition={{duration:2, delay:3, repeat: Infinity}}
           className="flex py-2 pr-10 pl-4 items-center gap-3 bg-[#1D3D2F] rounded-2xl"
           
         >
@@ -77,7 +80,7 @@ export default function Navbar() {
             <span className="text-white underline">Journey</span>
             <span className="text-[#e0ee85] underline">Nest</span>
           </span>
-        </div>
+        </motion.div>
 
         {/* Right: Icons + Profile */}
         <div className="flex z-40 items-center gap-4">
