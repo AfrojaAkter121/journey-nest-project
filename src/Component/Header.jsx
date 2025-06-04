@@ -5,7 +5,7 @@ import { motion } from "motion/react";
 
 export default function Header() {
   return (
-    <header className="relative rounded-lg overflow-hidden">
+    <header className="relative overflow-hidden">
       <Splide
         options={{
           type: "fade",
@@ -23,10 +23,10 @@ export default function Header() {
             initial={{ opacity: 0.7 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 5 }}
-            className="relative rounded-2xl overflow-hidden bg-gradient-to-b from-[#D7E95D]/80 to-white bg-no-repeat bg-center bg-cover"
+            className="relative rounded-t-2xl overflow-hidden bg-gradient-to-b from-[#D7E95D]/80 to-white bg-no-repeat bg-center bg-cover"
             style={{
               backgroundImage: `url('https://i.ibb.co/mP5yp9L/pexels-tatianasyrikova-3933900.jpg')`,
-              backgroundBlendMode: "multiply", // গ্রেডিয়েন্ট আর ইমেজ মিক্স করার জন্য
+              backgroundBlendMode: "multiply", 
             }}
           >
             <div className="absolute inset-0 bg-black/50 z-10"></div>
@@ -64,10 +64,10 @@ export default function Header() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 5 }}
-            className=" bg-cover bg-center relative flex items-center"
+            className="relative rounded-t-2xl overflow-hidden bg-gradient-to-b from-[#D7E95D]/80 to-white bg-no-repeat bg-center bg-cover"
             style={{
-              backgroundImage:
-                "url('https://i.ibb.co/sdpRdy9W/pexels-asadphoto-1024960.jpg')",
+              backgroundImage: `url('https://i.ibb.co/qFFvz7Vn/pexels-reelssman-2148981725-30637575.jpg')`,
+              backgroundBlendMode: "multiply",
             }}
           >
             <div className="absolute inset-0 bg-black/50 z-10"></div>
@@ -79,20 +79,18 @@ export default function Header() {
               className="relative z-20 text-white px-6 md:px-20 py-32 animate-slideUp"
             >
               <h1 className="text-4xl md:text-5xl font-bold mb-4 italic">
-                <span className="text-[#D7E95D]">Plan Your</span> Next <br />{" "}
-                Great Escape!
+                <span className="text-[#D7E95D]">Plan Your Next  </span> <br />Great Escape!
               </h1>
               <p className="mb-6 max-w-xl">
-                We offer tailor-made experiences and unforgettable memories.{" "}
-                <br />
-                Let’s create your travel story together.
+              We offer tailor-made experiences and   <br /> unforgettable memories. Let’s create <br />
+              your travel story together.
               </p>
               <div className="flex flex-wrap gap-2">
                 <button className="px-6 py-3 rounded-l-full text-black bg-[#D7E95D]/80">
-                  Get Started
+                Get Started
                 </button>
                 <button className="bg-white/60 px-6 py-3 rounded-r-full text-green-900 hover:bg-gray-200 font-bold">
-                  Learn More
+                Learn More
                 </button>
               </div>
             </motion.div>
@@ -105,9 +103,9 @@ export default function Header() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 5 }}
-            className="relative rounded-2xl overflow-hidden bg-gradient-to-b from-[#D7E95D]/80 to-white bg-no-repeat bg-center bg-cover"
+            className="relative rounded-t-2xl overflow-hidden bg-gradient-to-b from-[#D7E95D]/80 to-white bg-no-repeat bg-center bg-cover"
             style={{
-              backgroundImage: `url('https://i.ibb.co/qFFvz7Vn/pexels-reelssman-2148981725-30637575.jpg')`,
+              backgroundImage: `url('https://i.ibb.co/fYNDscby/pexels-felipealves-3833192.jpg')`,
               backgroundBlendMode: "multiply",
             }}
           >
@@ -146,9 +144,9 @@ export default function Header() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 5 }}
-            className="relative rounded-2xl overflow-hidden bg-gradient-to-b from-[#D7E95D]/80 to-white bg-no-repeat bg-center bg-cover"
+            className="relative rounded-t-2xl overflow-hidden bg-gradient-to-b from-[#D7E95D]/80 to-white bg-no-repeat bg-center bg-cover"
             style={{
-              backgroundImage: `url('https://i.ibb.co/q3RYjLWm/pexels-asadphoto-1024969.jpg)`,
+              backgroundImage: `url('https://i.ibb.co/q3RYjLWm/pexels-asadphoto-1024969.jpg')`,
               backgroundBlendMode: "multiply",
             }}
           >
@@ -161,20 +159,19 @@ export default function Header() {
               className="relative z-20 text-white px-6 md:px-20 py-32 animate-slideUp"
             >
               <h1 className="text-4xl md:text-5xl font-bold mb-4 italic">
-                <span className="text-[#D7E95D]">Experience Vibrant</span>{" "}
-                <br />
-                Dream City Life
+                <span className="text-[#D7E95D]">Experience Vibrant  </span> <br />City Life
               </h1>
               <p className="mb-6 max-w-xl">
-                Discover urban charm, rich culture, and exciting <br />{" "}
-                nightlife with our city travel packages.
+                Breathe fresh air, hike thrilling trails, and <br /> capture
+                breathtaking views with <br />
+                our mountain adventures.
               </p>
               <div className="flex flex-wrap gap-2">
                 <button className="px-6 py-3 rounded-l-full text-black bg-[#D7E95D]/80">
-                  Book Now
+                Book Now
                 </button>
                 <button className="bg-white/60 px-6 py-3 rounded-r-full text-green-900 hover:bg-gray-200 font-bold">
-                  Discover More
+                Discover More
                 </button>
               </div>
             </motion.div>

@@ -68,7 +68,7 @@ export default function Navbar() {
           initial={{scale: [1, 0.9, 1]}}
           animate={{scale: [0.9, 1, 0.9]}}
           transition={{duration:2, delay:3, repeat: Infinity}}
-          className="flex py-2 pr-10 pl-4 items-center gap-3 bg-[#1D3D2F] rounded-2xl"
+          className="flex py-2 pr-10 pl-4 items-center gap-3 bg-[#525e04] rounded-2xl"
           
         >
           <img

@@ -6,8 +6,8 @@ export default function CircleImageLayout() {
       <div className="mt-20">
         <div className="flex flex-col justify-center items-center">
             <motion.h1
-            initial={{y:10}}
-            animate={{y:0}}
+            initial={{y:[10, 0, 10]}}
+            animate={{y:[0, 10 , 0]}}
             transition={{duration: 4, repeat: Infinity}}
              className="text-center w-md text-2xl font-bold italic bg-[#c3d35a]">Discover Stories Around the Globe</motion.h1>
             <p className="text-center text-[#3e4705] mt-5">Travel brings us together. Each journey tells  a different story — from cozy <br/> cafés in Paris to vibrant street markets in Bangkok. Our global<br/> community of explorers shares real moments, authentic experiences, <br/> and the joy of discovering the unknown.</p>
