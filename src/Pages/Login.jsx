@@ -1,63 +1,72 @@
 import React, { use, useState } from "react";
 import { FaGithub, FaGoogle, FaTwitter } from "react-icons/fa";
-import { Link } from "react-router";
-// import { GoogleAuthProvider, updateProfile } from "firebase/auth";/
-// import { signInWithPopup } from "firebase/auth";
-// import { auth } from "../Firebase/firebase.config";
-// import { AuthContext } from "../Provider/AuthProvider";
+import { Link, useLocation, useNavigate } from "react-router"
+import { GoogleAuthProvider } from "firebase/auth";
+import { signInWithPopup } from "firebase/auth";
+import { AuthContext } from "../Context/AuthProvider";
+import { auth } from "../Firebase/firebase";
+import Swal from "sweetalert2";
+
+
+
 
 const Login = () => {
-//   const {signUp ,setUser} = use(AuthContext)
+  const {loginUser} = use(AuthContext)
   const [error, setError] = useState("");
+  const navigate = useNavigate();
+  const location = useLocation();
+
   
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const name = e.target.name.value;
     const email = e.target.email.value;
     const password = e.target.password.value;
-    const photo = e.target.photo.value;
-    setError("");
-
-    // Validation Rules
-    if (password.length < 6) {
-      setError("Password must be at least 6 characters long.");
-      return;
-    } else if (!/[a-z]/.test(password)) {
-      setError("Password must contain at least one lowercase letter.");
-      return;
-    } else if (!/[A-Z]/.test(password)) {
-      setError("Password must contain at least one uppercase letter.");
-      return;
-    } else if (!/[0-9]/.test(password)) {
-      setError("Password must contain at least one number.");
-      return;
-    } else {
-      setError(""); // Everything is valid
-    }
 
 
-//     signUp(email, password).then(res => {
-//       updateProfile(auth.currentUser, {
-//         displayName : name,
-//         photoURL : photo
-//       })
-//       const user = res.user 
-//       setUser({...user,displayName : name,
-//         photoURL : photo })
-//     }).catch(err => {
-//       console.log(err)
-//     })
+    loginUser(email, password)
+    .then(() => {
+        navigate(`${location.state ? location.state : "/"}`);
+        Swal.fire({
+          title: "Login Success!",
+          icon: "success",
+          draggable: true,
+        });
+      })
+      .catch((err) => {
+        setError(err)
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: err.message,
+          footer: '<a href="#">Why do I have this issue?</a>',
+        });
+      });
 
-//   };
+
+  }
 
   
-//   // signup with google
-//   const provider = new GoogleAuthProvider();
-//   const handleGoogleSignUp = () => {
-//     signInWithPopup(auth, provider).then((res) => {
-//       console.log(res.user);
-//     });
+  // signup with google
+  const provider = new GoogleAuthProvider();
+  const handleGoogleSignUp = () => {
+    signInWithPopup(auth, provider)
+    .then(() => {
+      Swal.fire({
+        title: "Google Login Success!",
+        icon: "success",
+        draggable: true,
+      });
+      navigate(`${location.state ? location.state : "/"}`);
+    })
+    .catch((err) => {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: err.message,
+        footer: '<a href="#">Why do I have this issue?</a>',
+      });
+    });
   };
 
   return (
@@ -128,7 +137,7 @@ const Login = () => {
             </button>
             {/* google signup */}
             <button
-            //   onClick={handleGoogleSignUp}
+              onClick={handleGoogleSignUp}
               className=" bg-[#cbdb5f] text-[#0e241a] rounded-full py-3 px-3"
             >
               <FaGoogle size={24} />

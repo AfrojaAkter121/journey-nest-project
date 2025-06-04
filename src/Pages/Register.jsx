@@ -1,15 +1,16 @@
-import React, { use, useState } from "react";
+import React, { useContext, useState } from "react";
 import { FaGithub, FaGoogle, FaTwitter } from "react-icons/fa";
-import { Link } from "react-router";
-// import { GoogleAuthProvider, updateProfile } from "firebase/auth";/
-// import { signInWithPopup } from "firebase/auth";
-// import { auth } from "../Firebase/firebase.config";
-// import { AuthContext } from "../Provider/AuthProvider";
+import { Link, useNavigate } from "react-router";
+import { GoogleAuthProvider, updateProfile } from "firebase/auth";
+import { signInWithPopup } from "firebase/auth";
+import { auth } from "../Firebase/firebase";
+import { AuthContext } from "../Context/AuthProvider";
+import Swal from "sweetalert2";
 
 const Register = () => {
-//   const {signUp ,setUser} = use(AuthContext)
+  const { createUser, setUser, user } = useContext(AuthContext);
   const [error, setError] = useState("");
-  
+  const navigate = useNavigate()
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -36,34 +37,58 @@ const Register = () => {
       setError(""); // Everything is valid
     }
 
+    createUser(email, password)
+      .then((res) => {
+        console.log(res.user);
 
-//     signUp(email, password).then(res => {
-//       updateProfile(auth.currentUser, {
-//         displayName : name,
-//         photoURL : photo
-//       })
-//       const user = res.user 
-//       setUser({...user,displayName : name,
-//         photoURL : photo })
-//     }).catch(err => {
-//       console.log(err)
-//     })
+        updateProfile(auth.currentUser, {
+          displayName: name,
+          photoURL: photo,
+        }).then(() => {
+          setUser({ ...user, displayName: name, photoURL: photo });
+          Swal.fire({
+            title: "User Created Success!",
+            icon: "success",
+            draggable: true,
+          });
+          navigate("/");
+        });
+      })
+      .catch((err) => {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: err.message,
+        });
+      });
+  };
 
-//   };
-
-  
-//   // signup with google
-//   const provider = new GoogleAuthProvider();
-//   const handleGoogleSignUp = () => {
-//     signInWithPopup(auth, provider).then((res) => {
-//       console.log(res.user);
-//     });
+  // signup with google
+  const provider = new GoogleAuthProvider();
+  const handleGoogleSignUp = () => {
+    signInWithPopup(auth, provider)
+    .then(() => {
+      Swal.fire({
+        title: "Google Signup Success!",
+        icon: "success",
+        draggable: true,
+      });
+      navigate(`${location.state ? location.state : "/"}`);
+    })
+    .catch((err) => {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: err.message,
+        footer: '<a href="#">Why do I have this issue?</a>',
+      });
+    });
   };
 
   return (
     <div>
       <div className=" flex items-center justify-center ">
-      <div className="bg-transparent bg-white text-[#0e241a] p-8 rounded-lg shadow-lg w-full max-w-sm border-2   border-[#0e241a]">
+        <div className="bg-transparent bg-white text-[#0e241a] p-8 rounded-lg shadow-lg w-full max-w-sm border-2   border-[#0e241a]">
           <h2 className="text-2xl -rotate-3 italic bg-[#cbdb5f] font-semibold mb-6 text-center">
             Create an account
           </h2>
@@ -127,26 +152,19 @@ const Register = () => {
 
           {/* github signup */}
           <div className=" flex space-x-3 justify-center items-center">
-            <button
-              className=" bg-[#cbdb5f] text-[#0e241a] rounded-full py-3 px-3"
-            >
+            <button className=" bg-[#cbdb5f] text-[#0e241a] rounded-full py-3 px-3">
               <FaGithub size={24} />
-
             </button>
 
-            <button
-              className=" bg-[#cbdb5f] text-[#0e241a] rounded-full py-3 px-3"
-            >
+            <button className=" bg-[#cbdb5f] text-[#0e241a] rounded-full py-3 px-3">
               <FaTwitter size={24} />
-
             </button>
             {/* google signup */}
             <button
-            //   onClick={handleGoogleSignUp}
+              onClick={handleGoogleSignUp}
               className=" bg-[#cbdb5f] text-[#0e241a] rounded-full py-3 px-3"
             >
               <FaGoogle size={24} />
-
             </button>
           </div>
         </div>
