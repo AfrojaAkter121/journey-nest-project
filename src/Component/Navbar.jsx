@@ -2,6 +2,7 @@ import { Bell, Menu, Sun } from "lucide-react";
 import { use, useState } from "react";
 import { Link, NavLink } from "react-router";
 import { AuthContext } from "../Context/AuthProvider";
+import { motion } from "motion/react"
 
 export default function Navbar() {
   const { user, logOut } = use(AuthContext);
@@ -57,25 +58,24 @@ export default function Navbar() {
     </div>
   );
   return (
-    <nav className="">
-      <div className="max-w-6xl mx-auto flex justify-between items-center px-4 py-2 rounded-lg ">
+    <motion.nav 
+    initial={{y : -100}}
+    animate={{y: 0}}
+    transition={{duration:2}}>
+      <div className="max-w-7xl mx-auto flex justify-between items-center px-4 py-2 rounded-lg ">
         {/* Left: Logo */}
         <div
-          className="flex py-2 pr-10 pl-4 items-center gap-3"
-          style={{
-            clipPath:
-              "polygon(75% 0%, 100% 100%, 75% 100%, 0% 100%, 0 46%, 0% 0%)",
-            backgroundColor: "#1D3D2F",
-          }}
+          className="flex py-2 pr-10 pl-4 items-center gap-3 bg-[#1D3D2F] rounded-2xl"
+          
         >
           <img
             src="https://i.ibb.co/MknWVzH4/guard-travel-logo-icon-design-vector-22948229.jpg"
             alt="Logo"
             className="h-10 w-10 rounded-full border-2 border-white"
           />
-          <span className="text-xl font-semibold">
-            <span className="text-white">Journey</span>
-            <span className="text-[#e0ee85]">Nest</span>
+          <span className="text-xl font-semibold ">
+            <span className="text-white underline">Journey</span>
+            <span className="text-[#e0ee85] underline">Nest</span>
           </span>
         </div>
 
@@ -145,6 +145,6 @@ export default function Navbar() {
           </div>
         </div>
       </div>
-    </nav>
+    </motion.nav>
   );
 }
