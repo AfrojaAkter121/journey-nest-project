@@ -43,13 +43,13 @@ export default function Navbar() {
             {links}
           </div>
           {/* Theme Toggle Icon */}
-          <Sun className="w-5 h-5 text-green-900" />
+          <Sun className="w-6 h-6 text-[#1D3D2F]" />
 
           {/* Profile Menu */}
-          <div className="flex z-20 items-center gap-2 border border-[#aabd32] rounded-xl px-2 py-1">
-            <Menu onClick={handleMenuBar} className="w-6 h-6 text-gray-600" />
+          <div className="flex z-20 items-center gap-2 border border-[#1D3D2F] rounded-xl px-2 py-1">
+            <Menu onClick={handleMenuBar} className="w-6 h-6 text-[#1D3D2F]" />
             {menu && (
-              <div className="w-56 absolute z-10 bg-[#D7E95D]/60 rounded-xl p-5 flex flex-col gap-3 top-18 right-24 justify-center  ">
+              <div className="w-56 absolute z-10 bg-[#D7E95D]/60 rounded-xl p-5 flex flex-col gap-3 top-18 md:right-26 right-0 justify-center  ">
                 <div className="md:hidden flex ">{links}</div>
 
                 <Link onClick={()=>console.log('clicked')} to="/signin">

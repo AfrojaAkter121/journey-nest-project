@@ -1,5 +1,5 @@
 import React, { use, useState } from "react";
-import { FaGithub, FaGoogle } from "react-icons/fa";
+import { FaGithub, FaGoogle, FaTwitter } from "react-icons/fa";
 import { Link } from "react-router";
 // import { GoogleAuthProvider, updateProfile } from "firebase/auth";/
 // import { signInWithPopup } from "firebase/auth";
@@ -63,8 +63,8 @@ const Register = () => {
   return (
     <div>
       <div className=" flex items-center justify-center ">
-      <div className="bg-transparent backdrop-blur-lg p-8 rounded-lg shadow-lg w-full max-w-sm border   border-opacity-30">
-          <h2 className="text-2xl font-semibold mb-6 text-center">
+      <div className="bg-transparent bg-white text-[#0e241a] p-8 rounded-lg shadow-lg w-full max-w-sm border-2   border-[#0e241a]">
+          <h2 className="text-2xl -rotate-3 italic bg-[#cbdb5f] font-semibold mb-6 text-center">
             Create an account
           </h2>
 
@@ -106,7 +106,7 @@ const Register = () => {
             {/* submit btn */}
             <button
               type="submit"
-              className="w-full bg-orange-500 hover:bg-orange-600 text-black font-medium py-2 rounded mt-4"
+              className="w-full bg-[#1D3D2F]  hover:-rotate-3 duration-75 text-white font-medium py-2 rounded-full mt-4"
             >
               Create an account
             </button>
@@ -114,7 +114,7 @@ const Register = () => {
 
           <p className="text-center text-sm mt-4">
             Already have an account?{" "}
-            <Link to="/auth/login" className="text-orange-500 font-medium">
+            <Link to="/signin" className="text-[#0e241a] font-medium underline">
               Login
             </Link>
           </p>
@@ -128,22 +128,22 @@ const Register = () => {
           {/* github signup */}
           <div className=" flex space-x-3 justify-center items-center">
             <button
-              className=" border rounded-full py-2 px-2"
+              className=" bg-[#cbdb5f] text-[#0e241a] rounded-full py-3 px-3"
             >
               <FaGithub size={24} />
 
             </button>
 
             <button
-              className=" border rounded-full py-2 px-2 "
+              className=" bg-[#cbdb5f] text-[#0e241a] rounded-full py-3 px-3"
             >
-              <FaGithub size={24} />
+              <FaTwitter size={24} />
 
             </button>
             {/* google signup */}
             <button
             //   onClick={handleGoogleSignUp}
-              className=" border rounded-full py-2 px-2 "
+              className=" bg-[#cbdb5f] text-[#0e241a] rounded-full py-3 px-3"
             >
               <FaGoogle size={24} />
 

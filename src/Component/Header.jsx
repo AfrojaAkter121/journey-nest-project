@@ -3,7 +3,7 @@ import Navbar from './Navbar'
 export default function Header() {
   return (
     <header
-      className="relative min-h-screen bg-cover bg-center overflow-hidden"
+      className="relative min-h-auto bg-cover bg-center overflow-hidden rounded-2xl"
       style={{
         backgroundImage: "url('https://i.ibb.co/84g2fL4X/pexels-kovyrina-1879288.jpg')",
       }}
@@ -17,7 +17,7 @@ export default function Header() {
       </div> */}
 
       {/* Hero Content */}
-      <div className="relative z-30 flex flex-col items-start px-4 h-full pt-32 pl-20 text-white">
+      <div className="relative z-30 flex flex-col items-start px-4 h-full py-32 pl-20 text-white">
         <h1 className="text-4xl md:text-5xl font-bold mb-4 italic">
           Discover Your Dream <br /> Destinations Here!
         </h1>
