@@ -3,6 +3,7 @@ import { use, useState } from "react";
 import { Link, NavLink } from "react-router";
 import { AuthContext } from "../Context/AuthProvider";
 import { motion } from "motion/react"
+import SlideHoverButton from '../Pages/SlideHoverButton';
 
 export default function Navbar() {
   const { user, logOut } = use(AuthContext);
@@ -23,38 +24,12 @@ export default function Navbar() {
 
   const links = (
     <div className="flex flex-col md:flex-row items-center italic gap-5  py-2">
-      <NavLink
-        className="bg-gray-200 px-4 py-2 rounded-full text-gray-600"
-        to="/"
-      >
-        Home
-      </NavLink>
-      <NavLink
-        className="bg-gray-200 px-4 py-2 rounded-full text-gray-600"
-        to="/allBlogs"
-      >
-        All Blogs
-      </NavLink>
-      <NavLink
-        className="bg-gray-200 px-4 py-2 rounded-full text-gray-600"
-        to="/addBlogs"
-      >
-        Add Blog
-      </NavLink>
-      <NavLink
-        className="bg-gray-200 px-4 py-2 rounded-full text-gray-600"
-        to="/featured"
-      >
-        {" "}
-        Featured
-      </NavLink>
-      <NavLink
-        className="bg-gray-200 px-4 py-2 rounded-full text-gray-600"
-        to="/wishList"
-      >
-        {" "}
-        Wishlist{" "}
-      </NavLink>
+      <SlideHoverButton text={'Home'} link={''}></SlideHoverButton>
+      <SlideHoverButton text={'Add Blog'} link={'addBlogs'}></SlideHoverButton>
+      <SlideHoverButton text={'AllBlogs'} link={'allBlogs'}></SlideHoverButton>
+      <SlideHoverButton text={'Featured'} link={'featured'}></SlideHoverButton>
+      <SlideHoverButton text={' Wishlist'} link={'wishList'}></SlideHoverButton>
+     
     </div>
   );
   return (
