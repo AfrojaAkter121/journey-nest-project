@@ -1,10 +1,12 @@
-import React from 'react';
+
+import { AuthContext } from '../Context/AuthProvider';
 
 const AllBlogs = () => {
+    
     return (
-        <div>
-            all blogs
-        </div>
+            <div>
+
+            </div>
     );
 };
 
