@@ -1,9 +1,10 @@
-import React, { use, useState } from "react";
+import React, { useContext, useState } from "react";
 import { AuthContext } from "../Context/AuthProvider";
-import { motion } from "motion/react";
+import { motion } from "framer-motion";
+import axios from "axios";
 
 const AddBlogForm = () => {
-  const { user } = use(AuthContext);
+  const { user } = useContext(AuthContext);
   const [step, setStep] = useState(1);
 
   const nextStep = () => {
@@ -16,19 +17,30 @@ const AddBlogForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const form = e.target;
+    const formData = new FormData(form);
+    const formEntries = Object.fromEntries(formData.entries());
+
+    console.log(formEntries); 
+
+    axios.post(`${import.meta.env.VITE_API}/blogs`, formEntries )
+    .then(res => console.log(res.data))
+    .catch(err => console.log(err))
   };
 
   return (
-    <div className="max-w-lg mx-auto ">
-
+    <div className="max-w-md mx-auto mt-20">
       <form
         onSubmit={handleSubmit}
-        className="space-y-4 border rounded py-8 px-7 bg-white rounded-r-3xl rounded-b-3xl border-4 border-[#313804]"
+        className=" border rounded py-8 px-7 bg-white border-4 border-[#313804]"
       >
-        <h2 className="text-xl font-bold mb-8 italic bg-[#bcce49] text-center w-1/2 mx-auto -rotate-3 ">Add Travel Blog </h2>
-        {step === 1 && (
-          <>
-            <input
+        <h2 className="text-xl font-bold mb-8 italic bg-[#bcce49] text-center w-1/2 mx-auto -rotate-3">
+          Add Travel Blog
+        </h2>
+
+        {/* Step 1 */}
+        <div className="space-y-3" style={{ display: step === 1 ? "block" : "none" }}>
+        <input
               name="title"
               placeholder="Title"
               required
@@ -78,12 +90,11 @@ const AddBlogForm = () => {
                 Next
               </button>
             </div>
-          </>
-        )}
+        </div>
 
-        {step === 2 && (
-          <>
-            <textarea
+        {/* Step 2 */}
+        <div className="space-y-3" style={{ display: step === 2 ? "block" : "none" }}>
+        <textarea
               name="short_description"
               placeholder="Short Description"
               required
@@ -133,8 +144,7 @@ const AddBlogForm = () => {
                 Submit
               </motion.button>
             </div>
-          </>
-        )}
+        </div>
       </form>
     </div>
   );
