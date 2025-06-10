@@ -75,7 +75,7 @@ export default function Navbar() {
                 user && <div className="bg-white/50 flex flex-col justify-center items-center p-5 rounded-lg">
                   <img src={user.photoURL} className="w-20 h-20 rounded-full object-cover border-2 border-green-800" alt="" srcset=""/>
                   <h1>{user.displayName}</h1>
-                  <h1>{user.email}</h1>
+                  <h1 className="">{user.email}</h1>
                 </div>
               }
 

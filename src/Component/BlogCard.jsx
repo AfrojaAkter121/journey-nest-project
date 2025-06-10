@@ -27,16 +27,17 @@ const BlogCard = ({blog}) => {
       </motion.div>
 
       {/* Content */}
-      <h3 className=" text-lg italic mt-3 flex items-center gap-2"><TbTypography></TbTypography>{blog.title}</h3>
+      <h1 className="text-center mt-3 font-semibold flex items-center gap-2"><MdCategory></MdCategory> {blog.category}</h1>
+      <h3 className=" text-lg italic  flex items-center gap-2"><TbTypography></TbTypography>{blog.title}</h3>
       <div className="">
       <h3 className="text-center font-semibold flex items-center gap-2"><FaLocationDot />{blog.placeName}</h3>
-      <h1 className="text-center font-semibold flex items-center gap-2"><MdCategory></MdCategory> {blog.category}</h1>
       </div>
       <p className="text-sm mt-1 italic">
         {blog.short_description}
       </p>
       <div className=" mt-6 flex items-center gap-3">
-        <Link className="bg-[#4d551b] text-white py-1 px-3 rounded-lg" to='/'>Details</Link>
+        <Link className="bg-[#4d551b] text-white py-1 px-3 rounded-lg" 
+        to={`/blogs/${blog._id}`}>Details</Link>
         <Link className="border border-[#4a521b] py-1 px-3 rounded-lg" to='/'>WishList</Link>
       </div>
     </div>
