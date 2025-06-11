@@ -8,7 +8,7 @@ const AllBlogs = () => {
     console.log(blogs)
     
     return (
-            <div className='max-w-6xl mx-auto grid grid-cols-3 gap-5'>
+            <div className='max-w-6xl mx-auto grid grid-cols-3 my-10 gap-5'>
                 {
                     blogs.map(blog => <BlogCard key={blog._id} blog={blog}></BlogCard>)
                 }

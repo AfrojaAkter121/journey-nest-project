@@ -1,5 +1,5 @@
 import React, { use } from "react";
-import { useLoaderData } from "react-router";
+import { Link, useLoaderData } from "react-router";
 import CommentForm from "../Component/CommentForm";
 import { AuthContext } from "../Context/AuthProvider";
 
@@ -80,9 +80,10 @@ const BlogDetails = () => {
              
           </div>
           {
-            user?.email === blog?.authorEmail ? <button className="bg-[#525e04] text-white px-6 py-2 rounded-md hover:bg-[#525e04] transition">
+            user?.email === blog?.authorEmail ? <Link to={`/update/${blog._id}`}>
+            <button className="bg-[#525e04] text-white px-6 py-2 rounded-md hover:bg-[#525e04] transition">
             update
-          </button> : ''
+          </button></Link> : ''
           }
           
         </div>

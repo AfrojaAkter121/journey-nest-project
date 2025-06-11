@@ -69,13 +69,13 @@ export default function Navbar() {
           <div className="flex z-20 items-center gap-2 border border-[#1D3D2F] rounded-xl px-2 py-1">
             <Menu onClick={handleMenuBar} className="w-6 h-6 text-[#1D3D2F]" />
             {menu && (
-              <div className="w-48 absolute z-10 bg-[#D7E95D]/60 rounded-xl p-5 flex flex-col gap-3 top-18 md:right-8 right-0 justify-center  ">
+              <div className="w-60 absolute z-10 bg-[#D7E95D]/60 rounded-xl p-5 flex flex-col gap-3 top-18 md:right-8 right-0 justify-center  ">
 
               {
                 user && <div className="bg-white/50 flex flex-col justify-center items-center p-5 rounded-lg">
                   <img src={user.photoURL} className="w-20 h-20 rounded-full object-cover border-2 border-green-800" alt="" srcset=""/>
                   <h1>{user.displayName}</h1>
-                  <h1 className="">{user.email}</h1>
+                  <h1 className="break-all">{user.email}</h1>
                 </div>
               }
 

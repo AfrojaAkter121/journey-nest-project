@@ -68,14 +68,14 @@ const AddBlogForm = () => {
             required
             className="w-full p-2 border rounded-r-full rounded-b-full bg-[#dce69b] text-green-950 px-5"
           >
-            <option value="">Select Category</option>
-            <option value="technology">Adventure</option>
-            <option value="travel">Beaches</option>
-            <option value="lifestyle">Mountains</option>
-            <option value="food">Cultural</option>
-            <option value="education">Historical</option>
-            <option value="education">Wildlife</option>
-            <option value="education">City Tours</option>
+             <option value="">Select Category</option>
+              <option value="adventure">Adventure</option>
+              <option value="beaches">Beaches</option>
+              <option value="mountains">Mountains</option>
+              <option value="cultural">Cultural</option>
+              <option value="historical">Historical</option>
+              <option value="wildlife">Wildlife</option>
+              <option value="city-tours">City Tours</option>
           </select>
           <input
             type="text"
