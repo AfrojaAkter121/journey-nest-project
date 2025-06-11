@@ -32,7 +32,7 @@ const BlogCard = ({blog}) => {
       <div className="">
       <h3 className="text-center font-semibold flex items-center gap-2"><FaLocationDot />{blog.placeName}</h3>
       </div>
-      <p className="text-sm mt-1 italic">
+      <p className="text-sm mt-1 italic break-words line-clamp-3">
         {blog.short_description}
       </p>
       <div className=" mt-6 flex items-center gap-3">

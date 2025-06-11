@@ -21,11 +21,12 @@ const AddBlogForm = () => {
     const formData = new FormData(form);
     const formEntries = Object.fromEntries(formData.entries());
 
-    console.log(formEntries); 
+    console.log(formEntries);
 
-    axios.post(`${import.meta.env.VITE_API}/blogs`, formEntries )
-    .then(res => console.log(res.data))
-    .catch(err => console.log(err))
+    axios
+      .post(`${import.meta.env.VITE_API}/blogs`, formEntries)
+      .then((res) => console.log(res.data))
+      .catch((err) => console.log(err));
   };
 
   return (
@@ -39,111 +40,134 @@ const AddBlogForm = () => {
         </h2>
 
         {/* Step 1 */}
-        <div className="space-y-3" style={{ display: step === 1 ? "block" : "none" }}>
-        <input
-              name="title"
-              placeholder="Title"
-              required
-              className="w-full p-2 border rounded-r-full rounded-t-full bg-[#dce69b] text-green-950 px-5"
-            />
-            <input
-              name="image"
-              placeholder="Image URL"
-              required
-              className="w-full p-2 border rounded-r-full rounded-b-full bg-[#dce69b] text-green-950 px-5"
-            />
-            <input
-              name="placeName"
-              placeholder="Place Name"
-              required
-              className="w-full p-2 border rounded-r-full rounded-t-full bg-[#dce69b] text-green-950 px-5"
-            />
+        <div
+          className="space-y-3"
+          style={{ display: step === 1 ? "block" : "none" }}
+        >
+          <input
+            name="title"
+            placeholder="Title"
+            required
+            className="w-full p-2 border rounded-r-full rounded-t-full bg-[#dce69b] text-green-950 px-5"
+          />
+          <input
+            name="image"
+            placeholder="Image URL"
+            required
+            className="w-full p-2 border rounded-r-full rounded-b-full bg-[#dce69b] text-green-950 px-5"
+          />
+          <input
+            name="placeName"
+            placeholder="Place Name"
+            required
+            className="w-full p-2 border rounded-r-full rounded-t-full bg-[#dce69b] text-green-950 px-5"
+          />
 
-            <input
-              name="category"
-              placeholder="Category"
-              required
-              className="w-full p-2 border rounded-r-full rounded-b-full bg-[#dce69b] text-green-950 px-5"
-            />
-            <input
-              type="text"
-              name="authorName"
-              value={user?.displayName || ""}
-              readOnly
-              className="w-full p-2 border rounded-r-full rounded-t-full  bg-[#313804] text-white px-5"
-            />
-            <input
-              type="email"
-              name="authorEmail"
-              value={user?.email || ""}
-              readOnly
-              className="w-full p-2 border rounded-r-full rounded-b-full
+          <select
+            name="category"
+            required
+            className="w-full p-2 border rounded-r-full rounded-b-full bg-[#dce69b] text-green-950 px-5"
+          >
+            <option value="">Select Category</option>
+            <option value="technology">Adventure</option>
+            <option value="travel">Beaches</option>
+            <option value="lifestyle">Mountains</option>
+            <option value="food">Cultural</option>
+            <option value="education">Historical</option>
+            <option value="education">Wildlife</option>
+            <option value="education">City Tours</option>
+          </select>
+          <input
+            type="text"
+            name="authorName"
+            value={user?.displayName || ""}
+            readOnly
+            className="w-full p-2 border rounded-r-full rounded-t-full  bg-[#313804] text-white px-5"
+          />
+          <input
+            type="email"
+            name="authorEmail"
+            value={user?.email || ""}
+            readOnly
+            className="w-full p-2 border rounded-r-full rounded-b-full
                bg-[#313804] text-white px-5"
-            />
+          />
 
-            <div className="flex justify-end">
-              <button
-                type="button"
-                onClick={nextStep}
-                className="bg-[#aebe3f] text-green-950 italic font-semibold px-4 py-2 mt-4 rounded"
-              >
-                Next
-              </button>
-            </div>
+          <input
+            type="email"
+            name="authorPhoto"
+            value={user?.photoURL || ""}
+            readOnly
+            className="w-full p-2 border rounded-r-full rounded-b-full
+               bg-[#313804] text-white px-5"
+          />
+
+          <div className="flex justify-end">
+            <button
+              type="button"
+              onClick={nextStep}
+              className="bg-[#aebe3f] text-green-950 italic font-semibold px-4 py-2 mt-4 rounded"
+            >
+              Next
+            </button>
+          </div>
         </div>
 
         {/* Step 2 */}
-        <div className="space-y-3" style={{ display: step === 2 ? "block" : "none" }}>
-        <textarea
-              name="short_description"
-              placeholder="Short Description"
-              required
-              className="w-full p-2 border rounded-xl bg-[#dce69b] text-green-950 px-5"
-            />
+        <div
+          className="space-y-3"
+          style={{ display: step === 2 ? "block" : "none" }}
+        >
+          <textarea
+            name="short_description"
+            placeholder="Short Description"
+            required
+            className="w-full p-2 border rounded-xl bg-[#dce69b] text-green-950 px-5"
+          />
 
-            <textarea
-              name="long_description"
-              placeholder="Long Description"
-              required
-              className="w-full p-2 border rounded-xl bg-[#dce69b] text-green-950 px-5"
-            />
-            <input
-              name="popularityReason"
-              placeholder="Why it's popular?"
-              required
-              className="w-full p-2 border rounded-r-full rounded-b-full bg-[#dce69b] text-green-950 px-5"
-            />
-            <input
-              name="bestTimeToVisit"
-              placeholder="Best Time to Visit"
-              required
-              className="w-full p-2 border rounded-r-full rounded-b-full bg-[#dce69b] text-green-950 px-5"
-            />
-            <input
-              name="activities"
-              placeholder="Activities (comma separated)"
-              required
-              className="w-full p-2 border rounded-r-full rounded-b-full bg-[#dce69b] text-green-950 px-5"
-            />
-            <div className="flex justify-between">
-              <button
-                type="button"
-                onClick={prevStep}
-                className="bg-[#aebe3f] text-green-950 italic font-semibold px-4 py-2 mt-4 rounded"
-              >
-                Back
-              </button>
-              
-              <motion.button
+          <textarea
+            name="long_description"
+            placeholder="Long Description"
+            required
+            className="w-full p-2 border rounded-xl bg-[#dce69b] text-green-950 px-5"
+          />
+          <input
+            name="popularityReason"
+            placeholder="Why it's popular?"
+            required
+            className="w-full p-2 border rounded-r-full rounded-b-full bg-[#dce69b] text-green-950 px-5"
+          />
+          <input
+            name="bestTimeToVisit"
+            placeholder="Best Time to Visit"
+            required
+            className="w-full p-2 border rounded-r-full rounded-b-full bg-[#dce69b] text-green-950 px-5"
+          />
+          <input
+            name="activities"
+            placeholder="Activities (comma separated)"
+            required
+            className="w-full p-2 border rounded-r-full rounded-b-full bg-[#dce69b] text-green-950 px-5"
+          />
+          <div className="flex justify-between">
+            <button
+              type="button"
+              onClick={prevStep}
+              className="bg-[#aebe3f] text-green-950 italic font-semibold px-4 py-2 mt-4 rounded"
+            >
+              Back
+            </button>
+
+            <motion.button
               initial={{ scale: [1, 0.9, 1] }}
               animate={{ scale: [0.9, 1, 0.9] }}
-              transition={{ duration: 1,repeat: Infinity }}
-                type="submit"
-                className=" bg-green-950 text-white italic font-semibold px-4 py-3 mt-4 rounded"
-              >
-                Submit
-              </motion.button>
-            </div>
+              transition={{ duration: 1, repeat: Infinity }}
+              type="submit"
+              className=" bg-green-950 text-white italic font-semibold px-4 py-3 mt-4 rounded"
+            >
+              Submit
+            </motion.button>
+          </div>
         </div>
       </form>
     </div>
