@@ -3,6 +3,7 @@ import { useLoaderData, useNavigate } from "react-router";
 import Swal from "sweetalert2";
 import { motion } from "framer-motion";
 import { AuthContext } from "../Context/AuthProvider";
+import axios from "axios";
 
 const UpdateBlogs = () => {
   const { user } = use(AuthContext);
@@ -17,6 +18,18 @@ const UpdateBlogs = () => {
 
     console.log(formEntries);
     // save the database
+    axios.put(`${import.meta.env.VITE_API}/update/${blog._id}`, formEntries)
+    .then(res =>{
+    console.log(res.data)
+    if(res.data.modifiedCount){
+      Swal.fire({
+        title: "Update!",
+        icon: "success",
+        draggable: true,
+      });
+      navigate("/allBlogs");
+    }
+    })
   };
 
   return (
