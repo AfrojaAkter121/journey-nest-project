@@ -4,6 +4,7 @@ import { Link, NavLink } from "react-router";
 import { AuthContext } from "../Context/AuthProvider";
 import { motion } from "motion/react";
 import SlideHoverButton from "../Pages/SlideHoverButton";
+import Swal from "sweetalert2";
 
 export default function Navbar() {
   const { user, logOut } = use(AuthContext);
@@ -16,10 +17,10 @@ export default function Navbar() {
   const handleLogout = () => {
     logOut()
       .then(() => {
-        console.log("logout successful");
+        Swal.fire("logout successful");
       })
       .catch((err) => {
-        console.log(err);
+        Swal.err(err);
       });
   };
 
@@ -99,7 +100,7 @@ export default function Navbar() {
                 ) : (
                   <div className="flex flex-col gap-3">
                     <div className="border-dashed border"></div>
-                    <Link onClick={() => console.log("clicked")} to="/signin">
+                    <Link  to="/signin">
                       <button className=" bg-green-900 text-white py-2 px-2 rounded-2xl w-[80%] italic">
                         Sign In
                       </button>

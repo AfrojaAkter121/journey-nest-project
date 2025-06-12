@@ -5,7 +5,7 @@ import BlogCard from '../Component/BlogCard';
 
 const AllBlogs = () => {
     const blogs = useLoaderData()
-    console.log(blogs)
+   
     
     return (
             <div className='max-w-6xl mx-auto grid grid-cols-3 my-10 gap-5'>

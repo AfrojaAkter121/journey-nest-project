@@ -21,12 +21,10 @@ const AddBlogForm = () => {
     const formData = new FormData(form);
     const formEntries = Object.fromEntries(formData.entries());
 
-    console.log(formEntries);
+
 
     axios
       .post(`${import.meta.env.VITE_API}/blogs`, formEntries)
-      .then((res) => console.log(res.data))
-      .catch((err) => console.log(err));
   };
 
   return (

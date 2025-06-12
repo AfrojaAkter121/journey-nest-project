@@ -5,9 +5,9 @@ import { AuthContext } from "../Context/AuthProvider";
 
 const BlogDetails = () => {
   const { user } = use(AuthContext);
-  console.log(user);
+  
   const blog = useLoaderData();
-  console.log(blog);
+
   return (
     <div className="bg-white py-12 px-4 md:px-16 grid md:grid-cols-2 gap-10 ">
       {/* Left Side */}

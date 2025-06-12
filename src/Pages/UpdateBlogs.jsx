@@ -16,11 +16,9 @@ const UpdateBlogs = () => {
     const formData = new FormData(form);
     const formEntries = Object.fromEntries(formData.entries());
 
-    console.log(formEntries);
     // save the database
     axios.put(`${import.meta.env.VITE_API}/update/${blog._id}`, formEntries)
     .then(res =>{
-    console.log(res.data)
     if(res.data.modifiedCount){
       Swal.fire({
         title: "Update!",

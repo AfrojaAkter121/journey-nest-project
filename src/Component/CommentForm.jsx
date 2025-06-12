@@ -9,12 +9,10 @@ const CommentForm = ({ postId, blog }) => {
   const [comments, setComments] = useState([]);
   const [newComment, setNewComment] = useState("");
 
-  console.log(newComment);
-  console.log(comments);
+
   // Load comments from MongoDB
   useEffect(() => {
     axios.get(`${import.meta.env.VITE_API}/comments/${postId}`).then((res) => {
-      console.log(res.data);
       setComments(res.data);
     });
   }, [postId]);
