@@ -5,6 +5,7 @@ import { AuthContext } from "../Context/AuthProvider";
 import { motion } from "motion/react";
 import SlideHoverButton from "../Pages/SlideHoverButton";
 import Swal from "sweetalert2";
+import { MdOutlineTravelExplore } from "react-icons/md";
 
 export default function Navbar() {
   const { user, logOut } = use(AuthContext);
@@ -45,17 +46,22 @@ export default function Navbar() {
           initial={{ scale: [1, 0.9, 1] }}
           animate={{ scale: [0.9, 1, 0.9] }}
           transition={{ duration: 2, delay: 3, repeat: Infinity }}
-          className="flex py-2 pr-10 pl-4 items-center gap-3 bg-[#525e04] rounded-2xl"
+          className="flex py-2 pr-10 pl-4 items-center gap-3  rounded-2xl"
         >
-          <img
+          {/* <img
             src="https://i.ibb.co/MknWVzH4/guard-travel-logo-icon-design-vector-22948229.jpg"
             alt="Logo"
             className="h-10 w-10 rounded-full border-2 border-white"
-          />
-          <span className="text-xl font-semibold ">
-            <span className="text-white underline">Journey</span>
-            <span className="text-[#e0ee85] underline">Nest</span>
-          </span>
+          /> */}
+          <MdOutlineTravelExplore size={35} className="text-[#414908]" />
+          <h1 className="text-4xl font-extrabold flex items-center">
+            <span className="text-[#b8d30c] -rotate-12 inline-block tracking-[0.1em]">
+              J
+            </span>
+            <span className="text-[#414908] tracking-[0.1em] ml-1">ourney</span>
+            
+            <span className="text-[#b8d30c] tracking-[0.1em] ml-1">Nest</span>
+          </h1>
         </motion.div>
 
         {/* Right: Icons + Profile */}
@@ -71,23 +77,30 @@ export default function Navbar() {
             <Menu onClick={handleMenuBar} className="w-6 h-6 text-[#1D3D2F]" />
             {menu && (
               <div className="w-60 absolute z-10 bg-[#D7E95D]/60 rounded-xl p-5 flex flex-col gap-3 top-18 md:right-8 right-0 justify-center  ">
-
-              {
-                user && <div className="bg-white/50 flex flex-col justify-center items-center p-5 rounded-lg">
-                  <img src={user.photoURL} className="w-20 h-20 rounded-full object-cover border-2 border-green-800" alt="" srcset=""/>
-                  <h1>{user.displayName}</h1>
-                  <h1 className="break-all">{user.email}</h1>
-                </div>
-              }
+                {user && (
+                  <div className="bg-white/50 flex flex-col justify-center items-center p-5 rounded-lg">
+                    <img
+                      src={user.photoURL}
+                      className="w-20 h-20 rounded-full object-cover border-2 border-green-800"
+                      alt=""
+                      srcset=""
+                    />
+                    <h1>{user.displayName}</h1>
+                    <h1 className="break-all">{user.email}</h1>
+                  </div>
+                )}
 
                 <div className="md:hidden flex border-t border-dashed pt-3 ">
                   {links}
-                  </div>
+                </div>
 
                 {user ? (
                   <div className="flex flex-col gap-4 justify-center text-center italic">
                     <div className="border-dashed border"></div>
-                    <SlideHoverButton text={"My Profile"} link={"myProfile"}></SlideHoverButton>
+                    <SlideHoverButton
+                      text={"My Profile"}
+                      link={"myProfile"}
+                    ></SlideHoverButton>
                     <button
                       onClick={() => {
                         handleLogout();
@@ -100,7 +113,7 @@ export default function Navbar() {
                 ) : (
                   <div className="flex flex-col gap-3">
                     <div className="border-dashed border"></div>
-                    <Link  to="/signin">
+                    <Link to="/signin">
                       <button className=" bg-green-900 text-white py-2 px-2 rounded-2xl w-[80%] italic">
                         Sign In
                       </button>

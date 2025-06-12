@@ -51,17 +51,17 @@ const BlogCard = ({ blog }) => {
 
       {/* White card - half over image, half outside */}
       <div
-        className="absolute left-1/2 -translate-x-1/2 -bottom-24 w-[90%]  rounded-xl p-5
-      bg-[#bac284]/80 text-green-950 shadow-xl z-10 border border-[#596610]"
+        className="absolute left-1/2 -translate-x-1/2 -bottom-24 hover:-bottom-0 duration-300 w-[90%] hover:w-[100%] rounded-xl p-5
+      bg-white/80 text-green-950 shadow-lg shadow-[#596610] z-10 border border-[#596610]"
       >
         {/* Orange Icon */}
         <motion.div
           initial={{ y: [0, -10, 0] }}
           animate={{ y: [-10, 0, -10] }}
           transition={{ duration: 3, repeat: Infinity }}
-          className="w-14 h-14 bg-[#49501a] rounded-full flex items-center justify-center -mt-10 mx-auto shadow-md"
+          className="w-14 h-14 bg-[#c1d443] text-green-950 rounded-full flex items-center justify-center -mt-10 mx-auto shadow-md"
         >
-          <MdFlightTakeoff className="text-white text-2xl" />
+          <MdFlightTakeoff className=" text-2xl" />
         </motion.div>
 
         {/* Content */}
@@ -83,7 +83,7 @@ const BlogCard = ({ blog }) => {
         </p>
         <div className=" mt-6 flex items-center gap-3">
           <Link
-            className="bg-[#4d551b] text-white py-1 px-3 rounded-lg italic"
+            className="bg-[#c1d443] text-green-950 py-1 px-3 rounded-lg italic"
             to={`/blogs/${blog._id}`}
           >
             Details

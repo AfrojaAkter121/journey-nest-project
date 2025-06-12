@@ -1,42 +1,52 @@
 import React from 'react';
+import { FaCarCrash } from 'react-icons/fa';
 import { FaEye, FaRegHeart, FaTrash } from 'react-icons/fa6';
+import { MdAutoDelete } from 'react-icons/md';
 
 const WishListTable = ({handleDelete, blog}) => {
+  console.log(blog)
+  const {activities, bestTimeToVisit, category, image,  placeName,popularityReason,  title } = blog;
+
+  const activityList = activities
+  .split(',')
+  .map(item => item.replace(/"/g, '').trim()); 
+
+
     return (
-        <div className="p-4 overflow-x-auto">
-      <h2 className="text-xl font-semibold mb-4">My Wishlist</h2>
-      <table className="min-w-full border divide-y divide-gray-200 shadow-md rounded-lg">
-        <thead className="bg-gray-100">
-          <tr>
-            <th className="px-4 py-2 text-left">Title</th>
-            <th className="px-4 py-2 text-left">Short Description</th>
-            <th className="px-4 py-2 text-left">Status</th>
-            <th className="px-4 py-2 text-left">Actions</th>
-          </tr>
-        </thead>
-        <tbody className="bg-white divide-y divide-gray-100">
-        <tr key={blog._id}>
-              <td className="px-4 py-3 font-medium">{blog.title}</td>
-              <td className="px-4 py-3">{blog.sort_description}</td>
-              <td className="px-4 py-3">
-                <span className="bg-green-100 text-green-700 text-xs px-2 py-1 rounded-full">
-                  Saved
-                </span>
-              </td>
-              <td className="px-4 py-3 space-x-3 text-gray-600">
-                <button title="View">
-                  <FaEye className="inline text-blue-500 hover:text-blue-700" />
-                </button>
-                <button title="React">
-                  <FaRegHeart className="inline text-pink-500 hover:text-pink-700" />
-                </button>
-                <button onClick={() => handleDelete(blog._id)} title="Delete">
-                  <FaTrash className="inline text-red-500 hover:text-red-700" />
-                </button>
-              </td>
-            </tr>
-        </tbody>
-      </table>
+      <div className="relative flex items-center justify-center bg-white">
+      {/* Blurred Price Tag */}
+      <div className="absolute left-[-30px] top-10 w-20 h-60 bg-[#9eaa4c] rounded-full blur-md opacity-80 rotate-[-10deg] z-0"></div>
+      <div className="absolute left-0 top-10 w-20 h-60 bg-[#9eaa4c] rounded-full flex items-center justify-center rotate-[-10deg] z-10">
+        <span className="text-white text-sm font-semibold transform -rotate-90 whitespace-nowrap">
+        </span>
+      </div>
+
+      {/* Main Card */}
+      <div className="relative z-20 bg-gradient-to-b from-[#e4e9c9] to-white rounded-3xl shadow-lg p-6 w-full h-full flex flex-col justify-between">
+        <div className="">
+          <img className='h-30 w-full object-cover rounded-t-lg' src={image} alt=""/>
+          <h2 className="text-lg italic text-white bg-[#586314] text-center mb-4">{title}</h2>
+          <p className="text-gray-600 mb-2">Category: {category}</p>
+          <p className="text-gray-600 mb-2">Place: {placeName}</p>
+          <p className="text-gray-600 mb-2">Best Time to Visit: {bestTimeToVisit}</p>
+         
+          <p className="text-gray-600 mb-2">Popularity Reason: {popularityReason}</p>
+          <div className="flex flex-wrap gap-2">
+    {activityList.map((activity, index) => (
+      <span
+        key={index}
+        className="bg-[#d9ddbd] text-[#313804] text-sm font-medium mr-2 px-3 py-1 rounded-full"
+      >
+        {activity}
+      </span>
+    ))}
+  </div>
+          
+        </div>
+        <button onClick={() => handleDelete(blog._id)} className="absolute mt-92 ml-62 bg-[#313804] text-white rounded-full p-4  hover:bg-[#313804] transition">
+          <MdAutoDelete/>
+        </button>
+      </div>
     </div>
     );
 };

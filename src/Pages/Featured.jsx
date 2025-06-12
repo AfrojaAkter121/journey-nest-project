@@ -123,7 +123,7 @@ const Featured = () => {
             </thead>
             <tbody>
               {table.getRowModel().rows.map(row => (
-                <tr key={row.id} className="even:bg-[#e6ecb9]/80
+                <tr key={row.id} className="even:bg-[#e6ecb9]
                  odd:bg-[#ecf0d5]">
                   {row.getVisibleCells().map(cell => (
                     <td key={cell.id} className="p-2 border-b border-[#bfce61]">
