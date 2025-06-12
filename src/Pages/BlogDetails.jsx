@@ -51,7 +51,7 @@ const BlogDetails = () => {
           {blog.popularityReason}
         </h2>
         <p className="text-gray-600 ">{blog.short_description}</p>
-        <p className="text-gray-600 mb-6 border-l-4 border-[#879432] pl-3">
+        <p className="text-gray-600 mb-6 border-l-4 border-[#879432] pl-3 break-all">
           {blog.long_description}
         </p>
 

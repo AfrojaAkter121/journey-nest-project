@@ -2,6 +2,7 @@ import React, { use, useEffect, useState } from 'react';
 import { AuthContext } from '../Context/AuthProvider';
 import Swal from 'sweetalert2';
 import axios from 'axios';
+import WishListTable from '../Component/WishListTable';
 
 const WishList = () => {
     const  {user} = use(AuthContext)
@@ -44,14 +45,25 @@ const WishList = () => {
 
     return (
         <div>
-            {
-                blogs.map(blog => <div key={blog._id} className='border mt-6'> 
-                    <h1>{blog.title}</h1>
-                    <h1>{blog.sort_description}</h1>
-                    <h1>{blog.long_description}</h1>
-                    <button onClick={()=> handleDelete(blog._id)}>delete</button>
-                </div>)
-            }
+             <div className="p-4 overflow-x-auto">
+                  <h2 className="text-xl font-semibold mb-4">My Wishlist</h2>
+                  <table className="min-w-full border divide-y divide-gray-200 shadow-md rounded-lg">
+                    <thead className="bg-gray-100">
+                      <tr>
+                        <th className="px-4 py-2 text-left">Title</th>
+                        <th className="px-4 py-2 text-left">Short Description</th>
+                        <th className="px-4 py-2 text-left">Status</th>
+                        <th className="px-4 py-2 text-left">Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody className="bg-white divide-y divide-gray-100">
+                        {
+                          blogs.map(blog => <WishListTable key={blog._id} blog={blog} handleDelete={handleDelete} />)
+                        }
+                    </tbody>
+                  </table>
+                </div>
+            
         </div>
     );
 };
