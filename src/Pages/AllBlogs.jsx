@@ -34,7 +34,7 @@ const AllBlogs = () => {
   return (
     <div className="max-w-6xl mx-auto">
      
-     <div className="flex justify-between mt-7mn">
+     <div className="flex justify-between mt-7">
      <input
         type="text"
         placeholder="🔍 Search blogs..."
@@ -47,7 +47,7 @@ const AllBlogs = () => {
           onChange={(e) => setCategory(e.target.value)}
             name="category"
             required
-            className="border px-4 py-2 rounded-lg shadow-md mb-4 w-sm border-2 border-[#e5e9ce] bg-[#e8f0b6] text-green-950 px-5"
+            className="border px-4 py-2 rounded-lg shadow-md mb-4 w-sm border-2 border-[#e5e9ce] bg-[#e8f0b6] text-green-950 "
           >
              <option value="all">All</option>
               <option value="adventure">Adventure</option>
@@ -65,7 +65,7 @@ const AllBlogs = () => {
           <p className="text-center text-gray-500">No blogs found.</p>
         )}
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 my-10 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 my-5 gap-5">
           {Array.isArray(blogs) &&
             blogs.map((blog) => (
               <BlogCard key={blog._id} blog={blog} />

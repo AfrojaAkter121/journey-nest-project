@@ -17,7 +17,11 @@ const UpdateBlogs = () => {
     const formEntries = Object.fromEntries(formData.entries());
 
     // save the database
-    axios.put(`${import.meta.env.VITE_API}/update/${blog._id}`, formEntries)
+    axios.put(`${import.meta.env.VITE_API}/update/${blog._id}`, formEntries, {
+      headers: {
+        Authorization: `Bearer ${user?.accessToken}`,
+      },
+    })
     .then(res =>{
     if(res.data.modifiedCount){
       Swal.fire({

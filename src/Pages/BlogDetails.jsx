@@ -1,12 +1,20 @@
-import React, { use } from "react";
-import { Link, useLoaderData } from "react-router";
+import React, { use, useEffect, useState } from "react";
+import { Link, useParams } from "react-router";
 import CommentForm from "../Component/CommentForm";
 import { AuthContext } from "../Context/AuthProvider";
 
 const BlogDetails = () => {
   const { user } = use(AuthContext);
-  
-  const blog = useLoaderData();
+  const {id} = useParams()
+  console.log(id)
+  const [blog, setBlog] = useState({});
+
+  // Fetch blog data using the loader
+  useEffect(() => {
+    fetch(`https://journey-nest-server.vercel.app/blogs/${id}`)
+    .then(res => res.json())
+    .then(data => setBlog(data))
+  }, [id]);
 
   return (
     <div className="bg-white py-12 px-4 md:px-16 grid md:grid-cols-2 gap-10 ">
@@ -24,7 +32,7 @@ const BlogDetails = () => {
             </div>
           </div>
           <img
-            src="https://i.ibb.co/Hp7fkPZ5/pexels-andre-furtado-43594-2916820.jpg"
+            src={blog.image}
             alt="Worker"
             className="w-full h-full object-cover rounded-md"
           />

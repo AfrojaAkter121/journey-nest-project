@@ -6,16 +6,19 @@ import WishListTable from "../Component/WishListTable";
 
 const WishList = () => {
   const { user } = use(AuthContext);
+  console.log(user.accessToken);
   const [search, setSearch] = useState("");
   // const [filteredBlogs, setFilteredBlogs] = useState([]);
   const [blogs, setBlogs] = useState([]);
   useEffect(() => {
-    fetch(`${import.meta.env.VITE_API}/wishlist/${user.email}?searchParams=${search}`)
+    fetch(`${import.meta.env.VITE_API}/wishlist/${user.email}?searchParams=${search}`, {
+      headers: {
+        Authorization: `Bearer ${user.accessToken}`,
+      },
+    })
       .then((res) => res.json())
       .then((data) => setBlogs(data));
   }, [user, search]);
-
-
 
   const handleDelete = (id) => {
     // First confirm with user

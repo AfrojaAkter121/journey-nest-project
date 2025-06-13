@@ -12,6 +12,7 @@ import PrivateRoute from "./PrivateRoute";
 import BlogDetails from "../Pages/BlogDetails";
 import UpdateBlogs from "../Pages/UpdateBlogs";
 
+
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -36,23 +37,27 @@ export const router = createBrowserRouter([
       },
       {
         path: "/allBlogs",
-        loader: () => fetch('http://localhost:3000/blogs'),
+        loader: () => fetch("https://journey-nest-server.vercel.app/blogs"),
         element: <AllBlogs></AllBlogs>,
       },
       {
-        path: '/blogs/:id',
-        loader: ({params}) => fetch(`http://localhost:3000/blogs/${params.id}`),
-        element: <PrivateRoute>
-          <BlogDetails></BlogDetails>
-        </PrivateRoute>
-      }, 
+        path: "/blogs/:id",
+        element: (
+          <PrivateRoute>
+            <BlogDetails></BlogDetails>
+          </PrivateRoute>
+        ),
+      },
       {
-        path: '/update/:id',
-        loader: ({params}) => fetch(`http://localhost:3000/blogs/${params.id}`),
-        element: <PrivateRoute>
-          <UpdateBlogs></UpdateBlogs>
-        </PrivateRoute>
-      }, 
+        path: "/update/:id",
+        loader: ({ params }) =>
+          fetch(`${import.meta.env.VITE_API}/blogs/${params.id}`),
+        element: (
+          <PrivateRoute>
+            <UpdateBlogs></UpdateBlogs>
+          </PrivateRoute>
+        ),
+      },
       {
         path: "/addBlogs",
         element: (

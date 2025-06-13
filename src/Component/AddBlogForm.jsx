@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react";
 import { AuthContext } from "../Context/AuthProvider";
 import { motion } from "framer-motion";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 const AddBlogForm = () => {
   const { user } = useContext(AuthContext);
@@ -24,7 +25,30 @@ const AddBlogForm = () => {
 
 
     axios
-      .post(`${import.meta.env.VITE_API}/blogs`, formEntries)
+      .post(`${import.meta.env.VITE_API}/blogs`, formEntries , {
+        headers: {
+          Authorization: `Bearer ${user?.accessToken}`,
+        },
+      })
+      .then((response) => {
+        if (response.data.insertedId) {
+          Swal.fire({
+            title: "Success!",
+            text: "Blog added successfully!",
+            icon: "success",
+            confirmButtonText: "OK",
+
+          })
+          form.reset();
+          setStep(1); // Reset to step 1 after successful submission
+        } else {
+          Swal.fire(
+            "Error!",
+            "Failed to add blog. Please try again.",
+            "error"
+          );
+        }
+      })
   };
 
   return (

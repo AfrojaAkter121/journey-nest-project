@@ -26,9 +26,9 @@ const Featured = () => {
           .slice(0, 10);
 
         // Prevent unnecessary re-render
-        if (JSON.stringify(top10) !== JSON.stringify(data)) {
+        // if (JSON.stringify(top10) !== JSON.stringify(data)) {
           setData(top10);
-        }
+        // }
       } catch (error) {
         console.error('Error fetching blogs:', error);
       }
@@ -36,67 +36,68 @@ const Featured = () => {
 
     loadBlogs();
     // We deliberately leave [] empty to avoid loop
-  }, [data, API]); 
+  }, []); 
 console.log(data)
-  const columns = [
-    {
-      header: 'Image',
-      accessorKey: 'image',
-      cell: ({ row }) => (
-        <img
-          src={row.original.image}
-          alt=""
-          className="w-24 h-20 object-cover rounded-lg p-1"
-        />
-      ),
-    },
-    { header: 'Place Name', accessorKey: 'placeName' },
-    { header: 'Title', accessorKey: 'title' },
-    {
-      header: 'Best Time',
-      accessorKey: 'bestTimeToVisit',
-      cell: ({ cell }) => {
-        const val = cell.getValue();
-        return <div title={val}>{val?.length > 20 ? val.slice(0, 20) + '...' : val}</div>;
-      },
-    },
-    { header: 'Author Name', accessorKey: 'authorName' },
-    {
-      header: 'Created Date',
-      accessorKey: 'createAt',
-      cell: ({ cell }) => (cell.getValue() ? cell.getValue().slice(0, 10) : 'No Date'),
-    },
-    {
-      header: 'Des Length',
-      accessorKey: 'descLength',
-      cell: ({ row }) => row.original.long_description.length,
-    },
-    {
-      header: 'Details',
-      id: 'details',
-      cell: ({ row }) => (
-        <Link to={`/blogs/${row.original._id}`}>
-          <button className="bg-[#bfce61] p-2 px-3 text-white rounded-2xl">
-            <FaEye size={16} className="text-black" />
-          </button>
-        </Link>
-      ),
-    },
-  ];
 
-  const table = useReactTable({
-    data,
-    columns,
-    getCoreRowModel: getCoreRowModel(),
-    getSortedRowModel: getSortedRowModel(),
-    getPaginationRowModel: getPaginationRowModel(),
-    state: { sorting: [] },
-  });
+  // const columns = [
+  //   {
+  //     header: 'Image',
+  //     accessorKey: 'image',
+  //     cell: ({ row }) => (
+  //       <img
+  //         src={row.original.image}
+  //         alt=""
+  //         className="w-24 h-20 object-cover rounded-lg p-1"
+  //       />
+  //     ),
+  //   },
+  //   { header: 'Place Name', accessorKey: 'placeName' },
+  //   { header: 'Title', accessorKey: 'title' },
+  //   {
+  //     header: 'Best Time',
+  //     accessorKey: 'bestTimeToVisit',
+  //     cell: ({ cell }) => {
+  //       const val = cell.getValue();
+  //       return <div title={val}>{val?.length > 20 ? val.slice(0, 20) + '...' : val}</div>;
+  //     },
+  //   },
+  //   { header: 'Author Name', accessorKey: 'authorName' },
+  //   {
+  //     header: 'Created Date',
+  //     accessorKey: 'createAt',
+  //     cell: ({ cell }) => (cell.getValue() ? cell.getValue().slice(0, 10) : 'No Date'),
+  //   },
+  //   {
+  //     header: 'Des Length',
+  //     accessorKey: 'descLength',
+  //     cell: ({ row }) => row.original.long_description.length,
+  //   },
+  //   {
+  //     header: 'Details',
+  //     id: 'details',
+  //     cell: ({ row }) => (
+  //       <Link to={`/blogs/${row.original._id}`}>
+  //         <button className="bg-[#bfce61] p-2 px-3 text-white rounded-2xl">
+  //           <FaEye size={16} className="text-black" />
+  //         </button>
+  //       </Link>
+  //     ),
+  //   },
+  // ];
+
+  // const table = useReactTable({
+  //   data,
+  //   columns,
+  //   getCoreRowModel: getCoreRowModel(),
+  //   getSortedRowModel: getSortedRowModel(),
+  //   getPaginationRowModel: getPaginationRowModel(),
+  //   state: { sorting: [] },
+  // });
 
   return (
     <div className="py-10">
       <h2 className="text-xl font-semibold mb-4 italic bg-[#bfce61] px-5 py-2 w-48">Featured Blogs</h2>
-      <div className="overflow-x-auto">
+      {/* <div className="overflow-x-auto">
         <table className="min-w-full border border-[#bfce61] rounded-xl">
           <thead className="bg-[#bfce61]">
             {table.getHeaderGroups().map(headerGroup => (
@@ -130,7 +131,7 @@ console.log(data)
             ))}
           </tbody>
         </table>
-      </div>
+      </div> */}
     </div>
   );
 };
