@@ -49,7 +49,7 @@ const AllBlogs = () => {
             required
             className="border px-4 py-2 rounded-lg shadow-md mb-4 w-sm border-2 border-[#e5e9ce] bg-[#e8f0b6] text-green-950 px-5"
           >
-             <option value="">All</option>
+             <option value="all">All</option>
               <option value="adventure">Adventure</option>
               <option value="beaches">Beaches</option>
               <option value="mountains">Mountains</option>

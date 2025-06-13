@@ -36,7 +36,7 @@ const Featured = () => {
 
     loadBlogs();
     // We deliberately leave [] empty to avoid loop
-  }, []); 
+  }, [data, API]); 
 console.log(data)
   const columns = [
     {

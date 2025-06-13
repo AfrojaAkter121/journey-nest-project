@@ -2,6 +2,7 @@ import React from 'react';
 import { FaCarCrash } from 'react-icons/fa';
 import { FaEye, FaRegHeart, FaTrash } from 'react-icons/fa6';
 import { MdAutoDelete } from 'react-icons/md';
+import { Link } from 'react-router';
 
 const WishListTable = ({handleDelete, blog}) => {
   console.log(blog)
@@ -43,6 +44,9 @@ const WishListTable = ({handleDelete, blog}) => {
   </div>
           
         </div>
+        <Link to={`/blogs/${blog.blogId}`} className="absolute mt-32 ml-60 bg-[#dde797] text-white rounded-full p-2  hover:bg-[#313804] transition">
+          <FaEye className='text-green-950 hover:text-white'/>
+        </Link>
         <button onClick={() => handleDelete(blog._id)} className="absolute mt-92 ml-62 bg-[#313804] text-white rounded-full p-4  hover:bg-[#313804] transition">
           <MdAutoDelete/>
         </button>
