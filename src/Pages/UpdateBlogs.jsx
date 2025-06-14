@@ -4,9 +4,11 @@ import Swal from "sweetalert2";
 import { motion } from "framer-motion";
 import { AuthContext } from "../Context/AuthProvider";
 import axios from "axios";
+import useAxiosSecure from "../Hooks/useAxiosSecure";
 
 const UpdateBlogs = () => {
   const { user } = use(AuthContext);
+  const axiosSecure = useAxiosSecure()
   const blog = useLoaderData();
   const navigate = useNavigate();
 
@@ -17,11 +19,8 @@ const UpdateBlogs = () => {
     const formEntries = Object.fromEntries(formData.entries());
 
     // save the database
-    axios.put(`${import.meta.env.VITE_API}/update/${blog._id}`, formEntries, {
-      headers: {
-        Authorization: `Bearer ${user?.accessToken}`,
-      },
-    })
+    axiosSecure.put(`/update/${blog._id}`, formEntries
+    )
     .then(res =>{
     if(res.data.modifiedCount){
       Swal.fire({

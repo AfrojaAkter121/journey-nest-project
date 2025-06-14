@@ -1,11 +1,12 @@
 import React, { useContext, useState } from "react";
 import { AuthContext } from "../Context/AuthProvider";
 import { motion } from "framer-motion";
-import axios from "axios";
 import Swal from "sweetalert2";
+import useAxiosSecure from "../Hooks/useAxiosSecure";
 
 const AddBlogForm = () => {
   const { user } = useContext(AuthContext);
+  const axiosSecure = useAxiosSecure()
   const [step, setStep] = useState(1);
 
   const nextStep = () => {
@@ -22,14 +23,9 @@ const AddBlogForm = () => {
     const formData = new FormData(form);
     const formEntries = Object.fromEntries(formData.entries());
 
-
-
-    axios
-      .post(`${import.meta.env.VITE_API}/blogs`, formEntries , {
-        headers: {
-          Authorization: `Bearer ${user?.accessToken}`,
-        },
-      })
+    axiosSecure
+      .post(`/blogs`, formEntries 
+      )
       .then((response) => {
         if (response.data.insertedId) {
           Swal.fire({

@@ -3,24 +3,22 @@ import { AuthContext } from "../Context/AuthProvider";
 import Swal from "sweetalert2";
 import axios from "axios";
 import WishListTable from "../Component/WishListTable";
+import useAxiosSecure from "../Hooks/useAxiosSecure";
 
 const WishList = () => {
   const { user, setLoading } = use(AuthContext);
+  const axiosSecure = useAxiosSecure()
   console.log(user.accessToken);
   const [search, setSearch] = useState("");
   // const [filteredBlogs, setFilteredBlogs] = useState([]);
   const [blogs, setBlogs] = useState([]);
   useEffect(() => {
     setLoading(true);
-    fetch(`${import.meta.env.VITE_API}/wishlist/${user.email}?searchParams=${search}`, {
-      headers: {
-        Authorization: `Bearer ${user.accessToken}`,
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => setBlogs(data));
+    axiosSecure.get(`/wishlist/${user.email}?searchParams=${search}`
+    )
+      .then((res) => setBlogs(res.data))
     setLoading(false);
-  }, [user, search, setLoading]);
+  }, [user, search, setLoading, axiosSecure]);
 
   const handleDelete = (id) => {
     // First confirm with user
