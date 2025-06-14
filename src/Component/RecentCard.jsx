@@ -50,7 +50,7 @@ const RecentCard = ({blog}) => {
             <h4 className="text-sm  mb-1">{blog.title}</h4>
             <h4 className="text-sm  mb-1">{blog.category}</h4>
             <h4 className="text-sm  mb-1">{blog.placeName}</h4>
-        <h2 className="text-lg font-semibold leading-snug mb-6 break-all">
+        <h2 className=" font-semibold leading-snug mb-6 break-all">
           {blog.popularityReason}
         </h2>
         {blog.activities?.split(",").map((activity, index) => (
