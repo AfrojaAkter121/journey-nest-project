@@ -5,6 +5,7 @@ import {
   FaGithub,
   FaWhatsapp,
 } from "react-icons/fa";
+import Newsletter from "./Newsletter";
 
 export default function Footer() {
   return (
@@ -89,6 +90,7 @@ export default function Footer() {
               <FaGithub />
             </a>
           </div>
+          <Newsletter></Newsletter>
         </div>
       </div>
 

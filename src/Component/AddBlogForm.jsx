@@ -35,8 +35,8 @@ const AddBlogForm = () => {
             confirmButtonText: "OK",
 
           })
-          form.reset();
-          setStep(1); // Reset to step 1 after successful submission
+          // form.reset();
+          // setStep(1); // Reset to step 1 after successful submission
         } else {
           Swal.fire(
             "Error!",

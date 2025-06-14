@@ -48,11 +48,7 @@ export default function Navbar() {
           transition={{ duration: 2, delay: 3, repeat: Infinity }}
           className="flex py-2 pr-10 pl-4 items-center gap-3  rounded-2xl"
         >
-          {/* <img
-            src="https://i.ibb.co/MknWVzH4/guard-travel-logo-icon-design-vector-22948229.jpg"
-            alt="Logo"
-            className="h-10 w-10 rounded-full border-2 border-white"
-          /> */}
+          
           <MdOutlineTravelExplore size={35} className="text-[#414908]" />
           <h1 className="text-4xl font-extrabold flex items-center">
             <span className="text-[#b8d30c] -rotate-12 inline-block tracking-[0.1em]">
