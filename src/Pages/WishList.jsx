@@ -5,12 +5,13 @@ import axios from "axios";
 import WishListTable from "../Component/WishListTable";
 
 const WishList = () => {
-  const { user } = use(AuthContext);
+  const { user, setLoading } = use(AuthContext);
   console.log(user.accessToken);
   const [search, setSearch] = useState("");
   // const [filteredBlogs, setFilteredBlogs] = useState([]);
   const [blogs, setBlogs] = useState([]);
   useEffect(() => {
+    setLoading(true);
     fetch(`${import.meta.env.VITE_API}/wishlist/${user.email}?searchParams=${search}`, {
       headers: {
         Authorization: `Bearer ${user.accessToken}`,
@@ -18,7 +19,8 @@ const WishList = () => {
     })
       .then((res) => res.json())
       .then((data) => setBlogs(data));
-  }, [user, search]);
+    setLoading(false);
+  }, [user, search, setLoading]);
 
   const handleDelete = (id) => {
     // First confirm with user

@@ -1,11 +1,12 @@
 import { useLoaderData } from "react-router";
 import { AuthContext } from "../Context/AuthProvider";
 import BlogCard from "../Component/BlogCard";
-import { useEffect, useState } from "react";
+import { use, useEffect, useState } from "react";
 import axios from "axios";
 
 
 const AllBlogs = () => {
+  const { setLoading } = use(AuthContext);
   const initialBlogs = useLoaderData();
   const [category, setCategory] = useState("all");
   const [title, setTitle] = useState("");
@@ -13,22 +14,24 @@ const AllBlogs = () => {
 
   useEffect(() => {
     const delayDebounce = setTimeout(() => {
-      
+      setLoading(true);
       if (title.trim() || category.trim()) {
         axios
           .get(`${import.meta.env.VITE_API}/blogs?category=${category}&title=${title}`)
           .then((res) => {
             setBlogs(res.data);
+            setLoading(false);
           })
           .catch((err) => console.error(err));
       } else {
         setBlogs(initialBlogs); 
+        setLoading(false);
       }
     }, 500);
-    console.log(delayDebounce);
+
     return () => clearTimeout(delayDebounce);
    
-  }, [title, category, initialBlogs]); 
+  }, [title, category, initialBlogs, setLoading]); 
  
 
   return (
