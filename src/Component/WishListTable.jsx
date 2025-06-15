@@ -3,6 +3,7 @@ import { FaCarCrash } from 'react-icons/fa';
 import { FaEye, FaRegHeart, FaTrash } from 'react-icons/fa6';
 import { MdAutoDelete } from 'react-icons/md';
 import { Link } from 'react-router';
+import { motion } from "framer-motion";
 
 const WishListTable = ({handleDelete, blog}) => {
   console.log(blog)
@@ -14,7 +15,13 @@ const WishListTable = ({handleDelete, blog}) => {
 
 
     return (
-      <div className="relative flex items-center justify-center bg-white">
+      <motion.div
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.1 }}
+      whileHover={{ scale: 1.08, transition: { duration: 0.3 } }} 
+      transition={{ duration: 1.5, ease: "easeOut", delay: 0.25 }}
+       className="relative flex items-center justify-center bg-white">
       {/* Blurred Price Tag */}
       <div className="absolute left-[-30px] top-10 w-20 h-60 bg-[#9eaa4c] rounded-full blur-md opacity-80 rotate-[-10deg] z-0"></div>
       <div className="absolute left-0 top-10 w-20 h-60 bg-[#9eaa4c] rounded-full flex items-center justify-center rotate-[-10deg] z-10">
@@ -51,7 +58,7 @@ const WishListTable = ({handleDelete, blog}) => {
           <MdAutoDelete/>
         </button>
       </div>
-    </div>
+    </motion.div>
     );
 };
 

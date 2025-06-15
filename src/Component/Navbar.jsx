@@ -140,7 +140,7 @@ export default function Navbar() {
                   </div>
                 ) : (
                   <img
-                    src="https://img.daisyui.com/images/profile/demo/gordon@192.webp"
+                    src="https://www.pngitem.com/pimgs/m/146-1468479_my-profile-icon-blank-profile-picture-circle-hd.png"
                     className="h-10 w-10 rounded-full"
                   />
                 )}

@@ -11,11 +11,14 @@ import WishList from "../Pages/WishList";
 import PrivateRoute from "./PrivateRoute";
 import BlogDetails from "../Pages/BlogDetails";
 import UpdateBlogs from "../Pages/UpdateBlogs";
+import NotFound from "../Pages/NotFound";
+import EmployeeProfile from "../Pages/EmployeeProfile";
 
 
 export const router = createBrowserRouter([
   {
     path: "/",
+    errorElement: <NotFound></NotFound>,
     element: <MainLayout></MainLayout>,
     hydrateFallbackElement: (
       <div className="flex justify-center items-center h-screen">
@@ -36,6 +39,10 @@ export const router = createBrowserRouter([
         element: <RegisterPage></RegisterPage>,
       },
       {
+        path: '/myProfile',
+        element: <PrivateRoute><EmployeeProfile></EmployeeProfile></PrivateRoute>,
+      },
+      {
         path: "/allBlogs",
         loader: () => fetch("https://journey-nest-server.vercel.app/blogs"),
         element: <AllBlogs></AllBlogs>,
@@ -48,6 +55,7 @@ export const router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
+
       {
         path: "/update/:id",
         loader: ({ params }) =>

@@ -48,7 +48,12 @@ const AddBlogForm = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto mt-20">
+    <motion.div
+    initial={{ opacity: 0, x: 110 }}
+    whileInView={{ opacity: 1, x: 0 }}
+    viewport={{ once: true, amount: 0.1 }}
+    transition={{ duration: 1.5, ease: "easeOut", delay: 0.25 }}
+     className="max-w-md mx-auto mt-20">
       <form
         onSubmit={handleSubmit}
         className=" border rounded py-8 px-7 bg-white border-4 border-[#313804]"
@@ -58,7 +63,11 @@ const AddBlogForm = () => {
         </h2>
 
         {/* Step 1 */}
-        <div
+        <motion.div
+         initial={{ opacity: 0, y: 40 }}
+         whileInView={{ opacity: 1, y: 0 }}
+         viewport={{ once: true, amount: 0.1 }}
+         transition={{ duration: 1.5, ease: "easeOut", delay: 1 }}
           className="space-y-3"
           style={{ display: step === 1 ? "block" : "none" }}
         >
@@ -129,10 +138,14 @@ const AddBlogForm = () => {
               Next
             </button>
           </div>
-        </div>
+        </motion.div>
 
         {/* Step 2 */}
-        <div
+        <motion.div
+         initial={{ opacity: 0, y: 40 }}
+         whileInView={{ opacity: 1, y: 0 }}
+         viewport={{ once: true, amount: 0.1 }}
+         transition={{ duration: 1.5, ease: "easeOut", delay: 0.25 }}
           className="space-y-3"
           style={{ display: step === 2 ? "block" : "none" }}
         >
@@ -186,9 +199,9 @@ const AddBlogForm = () => {
               Submit
             </motion.button>
           </div>
-        </div>
+        </motion.div>
       </form>
-    </div>
+    </motion.div>
   );
 };
 

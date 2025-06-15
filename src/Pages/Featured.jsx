@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import {
   flexRender,
   getCoreRowModel,
@@ -8,13 +8,16 @@ import {
 } from '@tanstack/react-table';
 import { FaEye } from 'react-icons/fa6';
 import { Link } from 'react-router';
+import { AuthContext } from '../Context/AuthProvider';
 
 const Featured = () => {
   const [data, setData] = useState([]);
+  const {setLoading} = useContext(AuthContext)
 
   const API = import.meta.env.VITE_API;
 
   useEffect(() => {
+    setLoading(true); // Set loading state to true
     const loadBlogs = async () => {
       try {
         const res = await fetch(`${API}/blogs`);
@@ -26,6 +29,7 @@ const Featured = () => {
           .slice(0, 10);
 
           setData(top10);
+          setLoading(false);
        
       } catch (error) {
         console.error('Error fetching blogs:', error);

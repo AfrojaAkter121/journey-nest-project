@@ -4,14 +4,17 @@ import Swal from "sweetalert2";
 import axios from "axios";
 import WishListTable from "../Component/WishListTable";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
+import Lottie from "lottie-react";
+import animation from '../../public/noData.json'; // Adjust the path as necessary
 
 const WishList = () => {
   const { user, setLoading } = use(AuthContext);
   const axiosSecure = useAxiosSecure()
   console.log(user.accessToken);
   const [search, setSearch] = useState("");
-  // const [filteredBlogs, setFilteredBlogs] = useState([]);
   const [blogs, setBlogs] = useState([]);
+
+
   useEffect(() => {
     setLoading(true);
     axiosSecure.get(`/wishlist/${user.email}?searchParams=${search}`
@@ -19,6 +22,8 @@ const WishList = () => {
       .then((res) => setBlogs(res.data))
     setLoading(false);
   }, [user, search, setLoading, axiosSecure]);
+
+
 
   const handleDelete = (id) => {
     // First confirm with user
@@ -88,7 +93,9 @@ const WishList = () => {
             ))}
           </div>
         ) : (
-          <p className="text-gray-500">No items in your wish list.</p>
+          <div className="flex justify-center items-center">
+            <Lottie style={{width: 600, height: 600}} animationData={animation}></Lottie>
+          </div>
         )}
       </div>
     </div>

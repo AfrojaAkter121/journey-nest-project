@@ -2,6 +2,7 @@ import React, { use, useEffect, useState } from "react";
 import { Link, useParams } from "react-router";
 import CommentForm from "../Component/CommentForm";
 import { AuthContext } from "../Context/AuthProvider";
+import {motion} from "framer-motion";
 
 const BlogDetails = () => {
   const { user } = use(AuthContext);
@@ -15,11 +16,16 @@ const BlogDetails = () => {
     .then(res => res.json())
     .then(data => setBlog(data))
   }, [id]);
-
+  console.log(blog.authorPhoto)
   return (
     <div className="bg-white py-12 px-4 md:px-16 grid md:grid-cols-2 gap-10 ">
       {/* Left Side */}
-      <div className="relative">
+      <motion.div
+      initial={{ opacity: 0, x: -110 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: true, amount: 0.1 }}
+      transition={{ duration: 1.5, ease: "easeOut", delay: 0.25 }}
+       className="relative">
         <div className="grid grid-cols-2 gap-2">
           <div className="relative">
             <img
@@ -43,10 +49,15 @@ const BlogDetails = () => {
          <CommentForm postId={blog._id} blog={blog}></CommentForm>
         
         
-      </div>
+      </motion.div>
 
       {/* Right Side */}
-      <div>
+      <motion.div
+      initial={{ opacity: 0, x: 110 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: true, amount: 0.1 }}
+      transition={{ duration: 1.5, ease: "easeOut", delay: 0.25 }}
+      >
         <h4 className="text-md bg-[#bdcc6a] text-green-900 mb-2 py-1 px-2 items-center gap-2 w-40 italic ml-3 rounded-r-full rounded-t-full ">
           {blog.title}
         </h4>
@@ -76,12 +87,12 @@ const BlogDetails = () => {
           moment unforgettable, captured with passion and clarity. Let the words
           guide you through a journey of discovery, reflection, and connection.”
         </p>
-
+       
         {/* CTA & CEO */}
         <div className="flex items-center justify-between mt-7">
           <div className="flex items-center gap-3">
             <img
-              src={user?.authorPhoto}
+              src={blog?.authorPhoto}
               alt="CEO"
               className="w-10 h-10 rounded-full object-cover"
             />
@@ -95,7 +106,7 @@ const BlogDetails = () => {
           }
           
         </div>
-      </div>
+      </motion.div>
       
     </div>
   );

@@ -2,6 +2,8 @@ import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import { IoIosSend } from "react-icons/io";
 import { AuthContext } from "../Context/AuthProvider";
+import Lottie from "lottie-react";
+import animation from '../../public/noComment.json'; // Adjust the path as necessary
 
 const CommentForm = ({ postId, blog }) => {
   const { user } = useContext(AuthContext);
@@ -64,13 +66,13 @@ const CommentForm = ({ postId, blog }) => {
             className="w-10 h-10 rounded-full"
           />
           <form onSubmit={handleCommentSubmit} className="flex gap-5 w-full">
-            <textarea
+            <input
               className="border border-gray-300 p-2 rounded w-full resize-none"
               rows="1"
               placeholder="Write a comment..."
               value={newComment}
               onChange={(e) => setNewComment(e.target.value)}
-            ></textarea>
+            ></input>
             <button
               type="submit"
               className="bg-[#525e04] text-white px-4 rounded hover:bg-orange-600 disabled:opacity-50"
@@ -109,7 +111,9 @@ const CommentForm = ({ postId, blog }) => {
             </div>
           ))
         ) : (
-          <p>No comments found</p>
+          <div className="flex justify-center items-center">
+            <Lottie style={{width: 200 , height: 200} } animationData={animation}></Lottie>
+          </div>
         )}
       </div>
     </div>

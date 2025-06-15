@@ -3,6 +3,8 @@ import { AuthContext } from "../Context/AuthProvider";
 import BlogCard from "../Component/BlogCard";
 import { use, useEffect, useState } from "react";
 import axios from "axios";
+import Lottie from "lottie-react";
+import animation from '../../public/noData.json'; // Adjust the path as necessary
 
 
 const AllBlogs = () => {
@@ -65,7 +67,9 @@ const AllBlogs = () => {
 
       <div className="grid gap-5">
         {blogs.length === 0 &&  (
-          <p className="text-center text-gray-500">No blogs found.</p>
+          <div className="flex justify-center items-center">
+            <Lottie style={{width: 600, height: 600}} animationData={animation}></Lottie>
+          </div>
         )}
 
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 my-5 gap-5">
