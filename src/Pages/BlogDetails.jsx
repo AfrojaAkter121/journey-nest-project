@@ -31,7 +31,7 @@ const BlogDetails = () => {
             <img
               src={blog.image}
               alt="Shipping"
-              className="w-full h-full object-cover rounded-md"
+              className="w-full object-cover rounded-md h-80"
             />
             <div className="absolute inset-0 flex items-center justify-center">
               <button className="bg-white p-4 rounded-full shadow-lg">▶</button>
@@ -40,7 +40,7 @@ const BlogDetails = () => {
           <img
             src={blog.image}
             alt="Worker"
-            className="w-full h-full object-cover rounded-md"
+            className="w-full h-full object-cover rounded-md  h-80"
           />
         </div>
         <div className="absolute top-4 rounded-r-full bg-[#bdcc6a] text-green-900 p-2 font-semibold text-center">

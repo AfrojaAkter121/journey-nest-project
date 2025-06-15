@@ -63,7 +63,7 @@ const CommentForm = ({ postId, blog }) => {
           <img
             src={user?.photoURL}
             alt="User"
-            className="w-10 h-10 rounded-full"
+            className="w-10 h-10 rounded-full object-cover"
           />
           <form onSubmit={handleCommentSubmit} className="flex gap-5 w-full">
             <input
@@ -97,7 +97,7 @@ const CommentForm = ({ postId, blog }) => {
               <img
                 src={comment?.userImage}
                 alt="User"
-                className="w-12 h-12 rounded-full mr-5"
+                className="w-12 h-12 rounded-full mr-5 object-cover"
               />
               <div>
                 <p className="text-gray-500 text-sm">{comment.username}</p>

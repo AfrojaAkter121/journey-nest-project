@@ -51,7 +51,7 @@ const EmployeeProfile = () => {
         <img
           src={userData.photoURL || "/default-avatar.png"}
           alt="Profile"
-          className="w-32 h-32 rounded-full border-2 border-green-800 shadow-md"
+          className="w-32 h-32 object-cover rounded-full border-2 border-green-800 shadow-md"
         />
         <h2 className="text-2xl mt-4">{userData.displayName}</h2>
         <p className="text-gray-500">{userData.email}</p>

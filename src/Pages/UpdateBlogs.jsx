@@ -17,7 +17,7 @@ const UpdateBlogs = () => {
     const form = e.target;
     const formData = new FormData(form);
     const formEntries = Object.fromEntries(formData.entries());
-
+console.log(formEntries)
     // save the database
     axiosSecure.put(`/update/${blog._id}`, formEntries
     )
@@ -170,7 +170,7 @@ const UpdateBlogs = () => {
             Photo Url
           </label>
           <input
-            name="imageUrl"
+            name="image"
             defaultValue={blog.image}
             placeholder="Image URL"
             className="w-full border-2 border-[#313804] focus:border-teal-500 focus:outline-none px-4 py-2 rounded text-[#4f5a0b] font-semibold transition duration-500"

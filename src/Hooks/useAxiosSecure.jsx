@@ -33,7 +33,7 @@ const useAxiosSecure = () => {
                 });
             })
         }
-        return Promise.reject(err.response.data || err.message);
+        return Promise.reject(err?.response?.data || err?.message);
     })
 
     return axiosInstance;

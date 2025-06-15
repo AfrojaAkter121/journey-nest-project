@@ -33,7 +33,6 @@ const AddBlogForm = () => {
             text: "Blog added successfully!",
             icon: "success",
             confirmButtonText: "OK",
-
           })
           // form.reset();
           // setStep(1); // Reset to step 1 after successful submission

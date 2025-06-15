@@ -11,7 +11,7 @@ import { motion } from "framer-motion";
 const guides = [
   {
     name: "Abu Mustafah",
-    photo: "https://i.ibb.co/4m5xQWk/guide1.jpg",
+    photo: "https://i.postimg.cc/pLdvBLMj/received-2098320103901193.jpg",
     description: "10 years experienced mountain guide. Expert in Sundarbans, Sylhet & Sajek tours.",
     specialty: "Jungle trekking, Cultural tours",
     location: "Bandarban",
@@ -22,7 +22,7 @@ const guides = [
   },
   {
     name: "Sharmin Akter",
-    photo: "https://i.ibb.co/0yRWprP/guide2.jpg",
+    photo: "https://i.postimg.cc/SsThz0J4/pexels-rdne-5778553.jpgc",
     description: "Expert female guide for Cox’s Bazar and Saint Martin’s travel.",
     specialty: "Beach tours, family trips",
     location: "Cox's Bazar",
@@ -33,7 +33,7 @@ const guides = [
   },
   {
     name: "Rezaul Karim",
-    photo: "https://i.ibb.co/M9Whq8B/guide3.jpg",
+    photo: "https://i.postimg.cc/jS2wmKrV/pexels-olly-3778569.jpg",
     description: "Wildlife & nature lover with deep knowledge of Sundarbans.",
     specialty: "Wildlife tracking, boat tours",
     location: "Khulna",
@@ -44,7 +44,7 @@ const guides = [
   },
   {
     name: "Mohona Das",
-    photo: "https://i.ibb.co/YXTZBnQ/guide4.jpg",
+    photo: "https://i.postimg.cc/SR2w2JBL/pexels-liliana-drew-8554347.jpg",
     description: "Local lifestyle expert and food tour guide.",
     specialty: "Food tours, cultural discovery",
     location: "Sylhet",
@@ -54,8 +54,8 @@ const guides = [
     isOnline: false,
   },
   {
-    name: "Jamil Hossain",
-    photo: "https://i.ibb.co/k9Y7z4k/guide5.jpg",
+    name: "Jamila Hossain",
+    photo: "https://i.postimg.cc/fTgfq80b/pexels-tima-miroshnichenko-5717632.jpg",
     description: "Certified hiking expert, offers full day guided trekking.",
     specialty: "Mountain hiking, off-trail guide",
     location: "Rangamati",
@@ -66,7 +66,7 @@ const guides = [
   },
   {
     name: "Taslima Rahman",
-    photo: "https://i.ibb.co/bzjLjQj/guide6.jpg",
+    photo: "https://i.postimg.cc/DyfxMWjx/pexels-tima-miroshnichenko-5717041.jpg",
     description: "Nature & Photography guide, fluent in storytelling.",
     specialty: "Photography spots, calm nature trips",
     location: "Sajek",
@@ -77,7 +77,7 @@ const guides = [
   },
   {
     name: "Nurul Islam",
-    photo: "https://i.ibb.co/hfJhftz/guide7.jpg",
+    photo: "https://i.postimg.cc/tCHjZzgY/pexels-marianna-15577-89427.jpg",
     description: "Best known for night safari and adventure camping.",
     specialty: "Night safari, forest camping",
     location: "Sundarbans",
@@ -88,7 +88,7 @@ const guides = [
   },
   {
     name: "Fatima Begum",
-    photo: "https://i.ibb.co/gRzn1Jp/guide8.jpg",
+    photo: "https://i.postimg.cc/vZqkz7G7/pexels-tima-miroshnichenko-5717641.jpg",
     description: "Woman-friendly tours and city exploration expert.",
     specialty: "Dhaka city tour, historical places",
     location: "Dhaka",
@@ -99,7 +99,7 @@ const guides = [
   },
   {
     name: "Tariq Aziz",
-    photo: "https://i.ibb.co/ThcMJpW/guide9.jpg",
+    photo: "https://i.postimg.cc/QMMsNxdm/pexels-liliana-drew-8554524.jpg",
     description: "Cycling + tour guide, for active young groups.",
     specialty: "Cycling tours, riverbank rides",
     location: "Mymensingh",
@@ -111,18 +111,18 @@ const guides = [
 ];
 
 const GuideCard = ({ guide }) => (
-  <div className=" bg-white text-green-900 rounded-xl shadow-md shadow-[#5e6916] p-6 text-center transform transition duration-300 hover:scale-105">
+  <div className=" bg-white text-[#0e241a] rounded-xl shadow-md shadow-[#5e6916] p-6 transform transition duration-300 hover:scale-105">
     <div className="relative">
-      <img src={guide.photo} alt={guide.name} className="rounded-xl w-full h-48 object-cover" />
+      <img src={guide.photo} alt={guide.name} className="rounded-t-xl w-full h-48 object-cover" />
       {guide.isOnline && (
         <span className="absolute top-2 right-2 bg-green-600 text-white text-xs px-2 py-1 rounded-full">
           Online
         </span>
       )}
     </div>
-    <div className="mt-4">
-      <h2 className="text-xl font-bold ">{guide.name}</h2>
-      <p className="mt-2 text-sm ">{guide.description}</p>
+    <div className="text-center">
+      <h2 className="text-xl font-bold bg-[#cbdb5f] text-[#0e241a] italic">{guide.name}</h2>
+      <p className="mt-2 text-lg">{guide.description}</p>
       <p className="text-sm"><span className="font-semibold">Specialty:</span> {guide.specialty}</p>
       <p className="text-sm"><span className="font-semibold">Languages:</span> {guide.languages.join(', ')}</p>
       <div className="flex justify-around items-center mt-7">
