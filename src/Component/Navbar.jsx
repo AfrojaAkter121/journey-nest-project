@@ -2,7 +2,7 @@ import { Bell, Menu, Sun } from "lucide-react";
 import { use, useState } from "react";
 import { Link, NavLink } from "react-router";
 import { AuthContext } from "../Context/AuthProvider";
-import { motion } from "motion/react";
+import { motion } from "framer-motion";
 import SlideHoverButton from "../Pages/SlideHoverButton";
 import Swal from "sweetalert2";
 import { MdOutlineTravelExplore } from "react-icons/md";
