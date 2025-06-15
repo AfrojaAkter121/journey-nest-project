@@ -1,81 +1,110 @@
-import axios from 'axios';
-import React, { useContext } from 'react';
-import { FaEye, FaRegBookmark, FaStar } from 'react-icons/fa';
-import { IoClose } from 'react-icons/io5';
-import { Link, useNavigate } from 'react-router';
-import { AuthContext } from '../Context/AuthProvider';
-import Swal from 'sweetalert2';
+import axios from "axios";
+import React, { useContext } from "react";
+import {
+  FaEye,
+  FaMapMarkerAlt,
+  FaRegBookmark,
+  FaStar,
+  FaTag,
+  FaUsers,
+  FaVoicemail,
+} from "react-icons/fa";
+import { IoClose } from "react-icons/io5";
+import { Link, useNavigate } from "react-router";
+import { AuthContext } from "../Context/AuthProvider";
+import Swal from "sweetalert2";
 
-const RecentCard = ({blog}) => {
-    const {user} = useContext(AuthContext)
-    const navigate = useNavigate();
+const RecentCard = ({ blog }) => {
+  const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
 
-    const wishData = {
-        ...blog,
-        userEmail: user?.email,
-        addedAt: new Date(),
-      };
+  const wishData = {
+    ...blog,
+    userEmail: user?.email,
+    addedAt: new Date(),
+  };
 
-    const handleAddWishlist = () => {
-        axios
-          .post(`${import.meta.env.VITE_API}/wishlist`, wishData)
-          .then((res) => {
-            if (res.data.result.insertedId) {
-              Swal.fire("Added!", "Blog added to wishlist!", "success");
-              navigate("/wishList");
-            }
-          })
-          .catch((err) => {
-            if (err.response?.status === 409) {
-              Swal.fire("Oops!", "Already in wishlist!", "info");
-            } else {
-              Swal.fire(
-                "Error",
-                err.response?.data?.message || "Something went wrong",
-                "error"
-              );
-            }
-          });
-      };
+  console.log(blog);
 
-      
-    return (
-        <div className="w-xl rounded-2xl p-6 text-white bg-gradient-to-br from-[#0c0f29] to-[#bcce49]  border border-white/10 relative italic">
+  const handleAddWishlist = () => {
+    axios
+      .post(`${import.meta.env.VITE_API}/wishlist`, wishData)
+      .then((res) => {
+        if (res.data.result.insertedId) {
+          Swal.fire("Added!", "Blog added to wishlist!", "success");
+          navigate("/wishList");
+        }
+      })
+      .catch((err) => {
+        if (err.response?.status === 409) {
+          Swal.fire("Oops!", "Already in wishlist!", "info");
+        } else {
+          Swal.fire(
+            "Error",
+            err.response?.data?.message || "Something went wrong",
+            "error"
+          );
+        }
+      });
+  };
+
+  return (
+    <div className="bg-[#4c5704] w-lg text-white p-6  rounded-lg  w-full relative overflow-hidden">
+      <div className="absolute top-0 right-0  h-full bg-white transform rotate-45 translate-x-1/3 -translate-y-1/3 z-0"></div>
+
+      <div className="relative z-10 flex flex-col md:flex-row items-center gap-6">
+        <div className="rounded-full border-4 border-white overflow-hidden w-40 h-40">
+          <img
+            src={blog.image}
+            alt="profile"
+            className="w-full h-full object-cover"
+          />
+        </div>
+
+        <div className="flex-1">
         
-        <div className='grid grid-cols-3 gap-5 items-center'>
-            <div className='col-span-1'> 
-                <img className='w-38 h-38 rounded-full object-cover' src={blog.image} alt=""/>
-            </div>
-            <div className='col-span-2'>
-            <h4 className="text-sm  mb-1">{blog.title}</h4>
-            <h4 className="text-sm  mb-1">{blog.category}</h4>
-            <h4 className="text-sm  mb-1">{blog.placeName}</h4>
-        <h2 className=" font-semibold leading-snug mb-6 break-all">
-          {blog.popularityReason}
-        </h2>
-        {blog.activities?.split(",").map((activity, index) => (
-          <span key={index} className="badge flex flex-wrap bg-[#d1da99]/50 rounded-lg text-black ml-3">
-            {activity.trim()}
-          </span>
-        ))}
+          <p className="text-gray-300 mb-4">⭐⭐⭐⭐</p>
 
-        <div className='mt-8 flex justify-between'>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
+            <div className="flex items-center gap-2 bg-gray-800 p-2 rounded">
+              <FaUsers className="text-teal-600" />
+              {blog.title}
+            </div>
+
+            <div className="flex items-center gap-2 bg-gray-800 p-2 rounded">
+              <FaTag className="text-teal-500" />
+              {blog.category}
+            </div>
+            <div className="col-span-1 sm:col-span-2 flex items-center gap-2 bg-gray-800 p-2 rounded">
+              <FaMapMarkerAlt className="text-red-500" />
+              {blog.placeName} Country
+            </div>
+            {blog.activities?.split(",").map((activity, index) => (
+              <span
+                key={index}
+                className=" bg-white/20 px-2 py-1  rounded-lg text-white ml-3"
+              >
+                {activity.trim()}
+              </span>
+            ))}
+          </div>
+          <div className="flex justify-between items-center mt-7">
             <Link to={`/blogs/${blog._id}`}>
-                <button className="bg-[#d1da99] text-black py-2 px-4 rounded-lg hover:bg-[#c0c87b] transition duration-300">
-                    <FaEye/>
-                </button>
+              <button className="bg-[#d1da99] text-black py-2 px-4 rounded-lg hover:bg-[#c0c87b] transition duration-300">
+                <FaEye />
+              </button>
             </Link>
-            <button onClick={handleAddWishlist} className="bg-[#d1da99] text-black py-2 px-4 rounded-lg hover:bg-[#c0c87b] transition duration-300 ml-2">
-                <FaRegBookmark/>
+            <button
+              onClick={handleAddWishlist}
+              className="bg-[#d1da99] text-black py-2 px-4 rounded-lg hover:bg-[#c0c87b] transition duration-300 ml-2"
+            >
+              <FaRegBookmark />
             </button>
-        </div>
             </div>
         </div>
-        
-  
-      
       </div>
-    );
+    </div>
+  );
 };
 
 export default RecentCard;

@@ -9,81 +9,133 @@ import {
 import { motion } from "framer-motion";
 
 const guides = [
-  // First 4
   {
-    name: "Jacob Jones",
-    role: "Tourist Guide",
-    image: "https://i.ibb.co/qFFvz7Vn/pexels-reelssman-2148981725-30637575.jpg",
+    name: "Abu Mustafah",
+    photo: "https://i.ibb.co/4m5xQWk/guide1.jpg",
+    description: "10 years experienced mountain guide. Expert in Sundarbans, Sylhet & Sajek tours.",
+    specialty: "Jungle trekking, Cultural tours",
+    location: "Bandarban",
+    languages: ["Bengali", "English"],
+    rating: 4.8,
+    priceRange: "৳1000 – ৳2000/day",
+    isOnline: true,
   },
   {
-    name: "Jane Cooper",
-    role: "Tourist Guide",
-    image: "https://i.ibb.co/qFFvz7Vn/pexels-reelssman-2148981725-30637575.jpg",
+    name: "Sharmin Akter",
+    photo: "https://i.ibb.co/0yRWprP/guide2.jpg",
+    description: "Expert female guide for Cox’s Bazar and Saint Martin’s travel.",
+    specialty: "Beach tours, family trips",
+    location: "Cox's Bazar",
+    languages: ["Bengali", "Hindi"],
+    rating: 4.7,
+    priceRange: "৳800 – ৳1500/day",
+    isOnline: false,
   },
   {
-    name: "Guy Hawkins",
-    role: "Tourist Guide",
-    image: "https://i.ibb.co/qFFvz7Vn/pexels-reelssman-2148981725-30637575.jpg",
+    name: "Rezaul Karim",
+    photo: "https://i.ibb.co/M9Whq8B/guide3.jpg",
+    description: "Wildlife & nature lover with deep knowledge of Sundarbans.",
+    specialty: "Wildlife tracking, boat tours",
+    location: "Khulna",
+    languages: ["Bengali", "English"],
+    rating: 4.6,
+    priceRange: "৳900 – ৳1800/day",
+    isOnline: true,
   },
   {
-    name: "Jenny Wilson",
-    role: "Tourist Guide",
-    image: "https://i.ibb.co/qFFvz7Vn/pexels-reelssman-2148981725-30637575.jpg",
-  },
-  // Next 4
-  {
-    name: "Albert Flores",
-    role: "Tourist Guide",
-    image: "https://i.ibb.co/qFFvz7Vn/pexels-reelssman-2148981725-30637575.jpg",
-  },
-  {
-    name: "Dianne Russell",
-    role: "Tourist Guide",
-    image: "https://i.ibb.co/qFFvz7Vn/pexels-reelssman-2148981725-30637575.jpg",
+    name: "Mohona Das",
+    photo: "https://i.ibb.co/YXTZBnQ/guide4.jpg",
+    description: "Local lifestyle expert and food tour guide.",
+    specialty: "Food tours, cultural discovery",
+    location: "Sylhet",
+    languages: ["Bengali", "English"],
+    rating: 4.9,
+    priceRange: "৳1000/day",
+    isOnline: false,
   },
   {
-    name: "Darrell Steward",
-    role: "Tourist Guide",
-    image: "https://i.ibb.co/qFFvz7Vn/pexels-reelssman-2148981725-30637575.jpg",
+    name: "Jamil Hossain",
+    photo: "https://i.ibb.co/k9Y7z4k/guide5.jpg",
+    description: "Certified hiking expert, offers full day guided trekking.",
+    specialty: "Mountain hiking, off-trail guide",
+    location: "Rangamati",
+    languages: ["Bengali"],
+    rating: 4.5,
+    priceRange: "৳1100 – ৳1700/day",
+    isOnline: true,
   },
   {
-    name: "Savannah Nguyen",
-    role: "Tourist Guide",
-    image: "https://i.ibb.co/qFFvz7Vn/pexels-reelssman-2148981725-30637575.jpg",
-  },
-  // Last 4
-  {
-    name: "Wade Warren",
-    role: "Tourist Guide",
-    image: "https://i.ibb.co/qFFvz7Vn/pexels-reelssman-2148981725-30637575.jpg",
-  },
-  {
-    name: "Leslie Alexander",
-    role: "Tourist Guide",
-    image: "https://i.ibb.co/qFFvz7Vn/pexels-reelssman-2148981725-30637575.jpg",
+    name: "Taslima Rahman",
+    photo: "https://i.ibb.co/bzjLjQj/guide6.jpg",
+    description: "Nature & Photography guide, fluent in storytelling.",
+    specialty: "Photography spots, calm nature trips",
+    location: "Sajek",
+    languages: ["Bengali", "English"],
+    rating: 4.8,
+    priceRange: "৳950 – ৳1500/day",
+    isOnline: true,
   },
   {
-    name: "Ronald Richards",
-    role: "Tourist Guide",
-    image: "https://i.ibb.co/qFFvz7Vn/pexels-reelssman-2148981725-30637575.jpg",
+    name: "Nurul Islam",
+    photo: "https://i.ibb.co/hfJhftz/guide7.jpg",
+    description: "Best known for night safari and adventure camping.",
+    specialty: "Night safari, forest camping",
+    location: "Sundarbans",
+    languages: ["Bengali"],
+    rating: 4.6,
+    priceRange: "৳1200/day",
+    isOnline: false,
   },
   {
-    name: "Cody Fisher",
-    role: "Tourist Guide",
-    image: "https://i.ibb.co/qFFvz7Vn/pexels-reelssman-2148981725-30637575.jpg",
+    name: "Fatima Begum",
+    photo: "https://i.ibb.co/gRzn1Jp/guide8.jpg",
+    description: "Woman-friendly tours and city exploration expert.",
+    specialty: "Dhaka city tour, historical places",
+    location: "Dhaka",
+    languages: ["Bengali", "English"],
+    rating: 4.9,
+    priceRange: "৳700 – ৳1300/day",
+    isOnline: true,
+  },
+  {
+    name: "Tariq Aziz",
+    photo: "https://i.ibb.co/ThcMJpW/guide9.jpg",
+    description: "Cycling + tour guide, for active young groups.",
+    specialty: "Cycling tours, riverbank rides",
+    location: "Mymensingh",
+    languages: ["Bengali", "English", "Hindi"],
+    rating: 4.4,
+    priceRange: "৳1000/day",
+    isOnline: false,
   },
 ];
 
 const GuideCard = ({ guide }) => (
-  <div className="bg-white rounded-xl shadow-md shadow-[#5e6916] p-6 text-center transform transition duration-300 hover:scale-105">
-    <img
-      src={guide.image}
-      alt={guide.name}
-      className="w-24 h-24 rounded-full mx-auto mb-4 object-cover"
-    />
-    <h3 className="text-xl font-semibold mb-1">{guide.name}</h3>
-    <p className="text-sm text-gray-500 mb-3">{guide.role}</p>
-    <div className="flex justify-center gap-3 ">
+  <div className=" bg-white text-green-900 rounded-xl shadow-md shadow-[#5e6916] p-6 text-center transform transition duration-300 hover:scale-105">
+    <div className="relative">
+      <img src={guide.photo} alt={guide.name} className="rounded-xl w-full h-48 object-cover" />
+      {guide.isOnline && (
+        <span className="absolute top-2 right-2 bg-green-600 text-white text-xs px-2 py-1 rounded-full">
+          Online
+        </span>
+      )}
+    </div>
+    <div className="mt-4">
+      <h2 className="text-xl font-bold ">{guide.name}</h2>
+      <p className="mt-2 text-sm ">{guide.description}</p>
+      <p className="text-sm"><span className="font-semibold">Specialty:</span> {guide.specialty}</p>
+      <p className="text-sm"><span className="font-semibold">Languages:</span> {guide.languages.join(', ')}</p>
+      <div className="flex justify-around items-center mt-7">
+      <p className="text-sm ">{guide.location}</p>
+      <p className="text-sm mt-2"><span className="font-semibold">⭐</span> {guide.rating} / 5</p>
+      </div>
+      
+    </div>
+    
+      
+   
+ 
+    <div className="flex justify-center gap-3 mt-7">
       <button className=" bg-[#cbdb5f] text-[#0e241a] rounded-full p-2">
         <FaFacebookF size={20} />
       </button>
@@ -103,12 +155,12 @@ const GuideCard = ({ guide }) => (
 const TourGuides = () => {
   // Group guides by 4 per slide
   const groupedGuides = [];
-  for (let i = 0; i < guides.length; i += 4) {
-    groupedGuides.push(guides.slice(i, i + 4));
+  for (let i = 0; i < guides.length; i += 3) {
+    groupedGuides.push(guides.slice(i, i + 3));
   }
 
   return (
-    <div className="py-16  text-center">
+    <div className="relative py-16  text-center">
       <h2 className="text-xl italic ">Meet with Guide</h2>
       <h1 className="text-3xl italic text-[#414908] ">🌍 A great guide turns a trip into a story worth remembering.</h1>
       <p className="flex justify-center text-center mb-10">Our experienced tour guides don’t just lead the way — they bring destinations to life with deep knowledge, <br/> local insights, and a warm smile.
@@ -128,7 +180,7 @@ const TourGuides = () => {
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true, amount: 0.1 }}
         transition={{ duration: 1.5, ease: "easeOut", delay: 0.25 }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 px-4 py-8 md:px-20">
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 px-4 py-8 md:px-20">
               {group.map((guide, idx) => (
                 <GuideCard key={idx} guide={guide} />
               ))}
