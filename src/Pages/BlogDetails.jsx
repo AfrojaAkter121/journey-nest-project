@@ -104,7 +104,7 @@ const BlogDetails = () => {
           </div>
           {user?.email === blog?.authorEmail ? (
             <Link to={`/update/${blog._id}`}>
-              <button className="bg-[#525e04] text-white px-6 py-2 rounded-md hover:bg-[#525e04] transition">
+              <button className="bg-[#525e04] text-white px-6 py-2 cursor-pointer rounded-md hover:bg-[#525e04] transition">
                 update
               </button>
             </Link>

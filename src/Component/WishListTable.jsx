@@ -75,7 +75,7 @@ const WishListTable = ({ handleDelete, blog }) => {
         </Link>
         <button
           onClick={() => handleDelete(blog._id)}
-          className="absolute mt-92 ml-62 bg-[#313804] text-white rounded-full p-4  hover:bg-[#313804] transition"
+          className="absolute mt-92 ml-62 bg-[#313804] text-white rounded-full p-4  hover:bg-[#313804] transition cursor-pointer"
         >
           <MdAutoDelete />
         </button>

@@ -84,7 +84,7 @@ const Featured = () => {
       id: "details",
       cell: ({ row }) => (
         <Link to={`/blogs/${row.original._id}`}>
-          <button className="bg-[#bfce61] p-2 px-3 text-white rounded-2xl">
+          <button className="bg-[#bfce61] p-2 px-3 text-white rounded-2xl cursor-pointer">
             <FaEye size={16} className="text-black" />
           </button>
         </Link>

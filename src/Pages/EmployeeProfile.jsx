@@ -79,7 +79,7 @@ const EmployeeProfile = () => {
             </div>
             <button
               type="submit"
-              className="w-full bg-[#1D3D2F]  hover:-rotate-3 duration-75 text-white font-medium py-2 rounded-full mt-4"
+              className="w-full bg-[#1D3D2F]  hover:-rotate-3 duration-75 text-white font-medium py-2 rounded-full mt-4 cursor-pointer"
             >
               Edit
             </button>

@@ -86,13 +86,13 @@ const RecentCard = ({ blog }) => {
           </div>
           <div className="flex justify-between items-center mt-7">
             <Link to={`/blogs/${blog._id}`}>
-              <button className="bg-[#d1da99] text-black py-2 px-4 rounded-lg hover:bg-[#c0c87b] transition duration-300">
+              <button className="bg-[#d1da99] text-black py-2 px-4 rounded-lg hover:bg-[#c0c87b] transition duration-300  cursor-pointer">
                 <FaEye />
               </button>
             </Link>
             <button
               onClick={handleAddWishlist}
-              className="bg-[#d1da99] text-black py-2 px-4 rounded-lg hover:bg-[#c0c87b] transition duration-300 ml-2"
+              className="bg-[#d1da99] text-black py-2 px-4 rounded-lg hover:bg-[#c0c87b] transition duration-300 ml-2 cursor-pointer"
             >
               <FaRegBookmark />
             </button>

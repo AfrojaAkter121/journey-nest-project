@@ -150,16 +150,16 @@ const GuideCard = ({ guide }) => (
     </div>
 
     <div className="flex justify-center gap-3 mt-7">
-      <button className=" bg-[#cbdb5f] text-[#0e241a] rounded-full p-2">
+      <button className=" bg-[#cbdb5f] text-[#0e241a] rounded-full p-2 cursor-pointer">
         <FaFacebookF size={20} />
       </button>
-      <button className=" bg-[#cbdb5f] text-[#0e241a] rounded-full p-2">
+      <button className=" bg-[#cbdb5f] text-[#0e241a] rounded-full p-2 cursor-pointer">
         <FaInstagram size={20} />
       </button>
-      <button className=" bg-[#cbdb5f] text-[#0e241a] rounded-full p-2">
+      <button className=" bg-[#cbdb5f] text-[#0e241a] rounded-full p-2 cursor-pointer">
         <FaTwitter size={20} />
       </button>
-      <button className=" bg-[#cbdb5f] text-[#0e241a] rounded-full p-2">
+      <button className=" bg-[#cbdb5f] text-[#0e241a] rounded-full p-2 cursor-pointer">
         <FaLinkedinIn size={20} />
       </button>
     </div>
