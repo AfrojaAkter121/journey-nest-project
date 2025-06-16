@@ -6,6 +6,7 @@ import RecentBlogs from "../Component/RecentBlogs";
 import TourGuides from "../Component/TourGuides";
 import TripSection from "../Component/TripSection";
 import { Helmet } from "react-helmet-async";
+import FaqItem from "../Component/FaqItem";
 
 const Home = () => {
   return (
@@ -21,10 +22,10 @@ const Home = () => {
         </h1>
       </div>
       <TripSection></TripSection>
-    
       <RecentBlogs></RecentBlogs>
       <CircleImageLayout></CircleImageLayout>
       <TourGuides></TourGuides>
+      <FaqItem></FaqItem>
     </div>
   );
 };
