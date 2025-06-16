@@ -2,30 +2,30 @@ import React, { use, useEffect, useState } from "react";
 import { Link, useParams } from "react-router";
 import CommentForm from "../Component/CommentForm";
 import { AuthContext } from "../Context/AuthProvider";
-import {motion} from "framer-motion";
+import { motion } from "framer-motion";
 
 const BlogDetails = () => {
   const { user } = use(AuthContext);
-  const {id} = useParams()
-  console.log(id)
+  const { id } = useParams();
   const [blog, setBlog] = useState({});
 
   // Fetch blog data using the loader
   useEffect(() => {
     fetch(`https://journey-nest-server.vercel.app/blogs/${id}`)
-    .then(res => res.json())
-    .then(data => setBlog(data))
+      .then((res) => res.json())
+      .then((data) => setBlog(data));
   }, [id]);
-  console.log(blog.authorPhoto)
+
   return (
     <div className="bg-white py-12 px-4 md:px-16 grid md:grid-cols-2 gap-10 ">
       {/* Left Side */}
       <motion.div
-      initial={{ opacity: 0, x: -110 }}
-      whileInView={{ opacity: 1, x: 0 }}
-      viewport={{ once: true, amount: 0.1 }}
-      transition={{ duration: 1.5, ease: "easeOut", delay: 0.25 }}
-       className="relative">
+        initial={{ opacity: 0, x: -110 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true, amount: 0.1 }}
+        transition={{ duration: 1.5, ease: "easeOut", delay: 0.25 }}
+        className="relative"
+      >
         <div className="grid grid-cols-2 gap-2">
           <div className="relative">
             <img
@@ -46,23 +46,24 @@ const BlogDetails = () => {
         <div className="absolute top-4 rounded-r-full bg-[#bdcc6a] text-green-900 p-2 font-semibold text-center">
           <div className=" italic">{blog.bestTimeToVisit}</div>
         </div>
-         <CommentForm postId={blog._id} blog={blog}></CommentForm>
-        
-        
+        <CommentForm postId={blog._id} blog={blog}></CommentForm>
       </motion.div>
 
       {/* Right Side */}
       <motion.div
-      initial={{ opacity: 0, x: 110 }}
-      whileInView={{ opacity: 1, x: 0 }}
-      viewport={{ once: true, amount: 0.1 }}
-      transition={{ duration: 1.5, ease: "easeOut", delay: 0.25 }}
+        initial={{ opacity: 0, x: 110 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true, amount: 0.1 }}
+        transition={{ duration: 1.5, ease: "easeOut", delay: 0.25 }}
       >
         <h4 className="text-md bg-[#bdcc6a] text-green-900 mb-2 py-1 px-2 items-center gap-2 w-40 italic ml-3 rounded-r-full rounded-t-full ">
           {blog.title}
         </h4>
         {blog.activities?.split(",").map((activity, index) => (
-          <span key={index} className="badge bg-[#525e04] rounded-lg text-white ml-3">
+          <span
+            key={index}
+            className="badge bg-[#525e04] rounded-lg text-white ml-3"
+          >
             {activity.trim()}
           </span>
         ))}
@@ -87,7 +88,7 @@ const BlogDetails = () => {
           moment unforgettable, captured with passion and clarity. Let the words
           guide you through a journey of discovery, reflection, and connection.”
         </p>
-       
+
         {/* CTA & CEO */}
         <div className="flex items-center justify-between mt-7">
           <div className="flex items-center gap-3">
@@ -96,18 +97,18 @@ const BlogDetails = () => {
               alt="CEO"
               className="w-10 h-10 rounded-full object-cover"
             />
-             
           </div>
-          {
-            user?.email === blog?.authorEmail ? <Link to={`/update/${blog._id}`}>
-            <button className="bg-[#525e04] text-white px-6 py-2 rounded-md hover:bg-[#525e04] transition">
-            update
-          </button></Link> : ''
-          }
-          
+          {user?.email === blog?.authorEmail ? (
+            <Link to={`/update/${blog._id}`}>
+              <button className="bg-[#525e04] text-white px-6 py-2 rounded-md hover:bg-[#525e04] transition">
+                update
+              </button>
+            </Link>
+          ) : (
+            ""
+          )}
         </div>
       </motion.div>
-      
     </div>
   );
 };

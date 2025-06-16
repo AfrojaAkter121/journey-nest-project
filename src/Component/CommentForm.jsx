@@ -3,7 +3,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { IoIosSend } from "react-icons/io";
 import { AuthContext } from "../Context/AuthProvider";
 import Lottie from "lottie-react";
-import animation from '../../public/noComment.json'; // Adjust the path as necessary
+import animation from "../../public/noComment.json"; // Adjust the path as necessary
 
 const CommentForm = ({ postId, blog }) => {
   const { user } = useContext(AuthContext);
@@ -15,7 +15,9 @@ const CommentForm = ({ postId, blog }) => {
   // 🔁 Load comments from MongoDB
   const fetchComments = async () => {
     try {
-      const res = await axios.get(`${import.meta.env.VITE_API}/comments/${postId}`);
+      const res = await axios.get(
+        `${import.meta.env.VITE_API}/comments/${postId}`
+      );
       setComments(res.data);
     } catch (error) {
       console.error("Failed to load comments:", error);
@@ -112,7 +114,10 @@ const CommentForm = ({ postId, blog }) => {
           ))
         ) : (
           <div className="flex justify-center items-center">
-            <Lottie style={{width: 200 , height: 200} } animationData={animation}></Lottie>
+            <Lottie
+              style={{ width: 200, height: 200 }}
+              animationData={animation}
+            ></Lottie>
           </div>
         )}
       </div>

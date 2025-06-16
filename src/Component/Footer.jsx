@@ -75,7 +75,7 @@ export default function Footer() {
               href="https://www.linkedin.com/in/yourprofile"
               target="_blank"
               rel="noopener noreferrer"
-             className="bg-green-950 p-2 rounded-full text-white hover:bg-gray-100 hover:text-black"
+              className="bg-green-950 p-2 rounded-full text-white hover:bg-gray-100 hover:text-black"
             >
               <FaLinkedinIn />
             </a>

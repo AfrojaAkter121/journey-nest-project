@@ -24,7 +24,7 @@ const RecentCard = ({ blog }) => {
     addedAt: new Date(),
   };
 
-  console.log(blog);
+
 
   const handleAddWishlist = () => {
     axios
@@ -62,7 +62,6 @@ const RecentCard = ({ blog }) => {
         </div>
 
         <div className="flex-1">
-        
           <p className="text-gray-300 mb-4">⭐⭐⭐⭐</p>
 
           <div className="space-y-3 text-sm">
@@ -74,10 +73,9 @@ const RecentCard = ({ blog }) => {
               <FaMapMarkerAlt className="text-red-500" />
               {blog.placeName} Country
             </div>
-            
           </div>
           <div className="flex flex-wrap gap-2 mt-4">
-           {blog.activities?.split(",").map((activity, index) => (
+            {blog.activities?.split(",").map((activity, index) => (
               <span
                 key={index}
                 className=" bg-white/20 text-[#151802] px-2 py-1 space-x-2 space-y-2 rounded-lg  ml-3"
@@ -85,7 +83,7 @@ const RecentCard = ({ blog }) => {
                 {activity.trim()}
               </span>
             ))}
-           </div>
+          </div>
           <div className="flex justify-between items-center mt-7">
             <Link to={`/blogs/${blog._id}`}>
               <button className="bg-[#d1da99] text-black py-2 px-4 rounded-lg hover:bg-[#c0c87b] transition duration-300">
@@ -98,7 +96,7 @@ const RecentCard = ({ blog }) => {
             >
               <FaRegBookmark />
             </button>
-            </div>
+          </div>
         </div>
       </div>
     </div>

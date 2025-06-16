@@ -13,7 +13,6 @@ const Newsletter = () => {
       return;
     }
 
-   
     toast.success("Thank you for subscribing to our newsletter");
 
     setEmail("");
@@ -21,7 +20,9 @@ const Newsletter = () => {
 
   return (
     <div className="max-w-md mx-auto p-6 bg-gray-100/40 rounded-md shadow-md mt-7">
-      <h2 className="text-xl italic font-semibold mb-4 text-center">Subscribe to our Newsletter</h2>
+      <h2 className="text-xl italic font-semibold mb-4 text-center">
+        Subscribe to our Newsletter
+      </h2>
 
       <form onSubmit={handleSubmit} className="flex gap-2">
         <input

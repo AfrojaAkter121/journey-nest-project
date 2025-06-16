@@ -2,8 +2,7 @@
 import { motion } from "framer-motion";
 import Lottie from "lottie-react";
 import { Link } from "react-router";
-import animation from '../../public/notFound.json'; // Adjust the path as necessary
-
+import animation from "../../public/notFound.json"; // Adjust the path as necessary
 
 const NotFound = () => {
   return (
@@ -15,7 +14,10 @@ const NotFound = () => {
         animate={{ scale: 1 }}
         transition={{ type: "spring", stiffness: 100, damping: 8 }}
       >
-        <Lottie style={{ width: '500px', height: '400px' }} animationData={animation}></Lottie>
+        <Lottie
+          style={{ width: "500px", height: "400px" }}
+          animationData={animation}
+        ></Lottie>
       </motion.h1>
 
       {/* Animated Text */}

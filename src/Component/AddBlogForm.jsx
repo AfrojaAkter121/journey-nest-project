@@ -6,7 +6,7 @@ import useAxiosSecure from "../Hooks/useAxiosSecure";
 
 const AddBlogForm = () => {
   const { user } = useContext(AuthContext);
-  const axiosSecure = useAxiosSecure()
+  const axiosSecure = useAxiosSecure();
   const [step, setStep] = useState(1);
 
   const nextStep = () => {
@@ -23,36 +23,30 @@ const AddBlogForm = () => {
     const formData = new FormData(form);
     const formEntries = Object.fromEntries(formData.entries());
 
-    axiosSecure
-      .post(`/blogs`, formEntries 
-      )
-      .then((response) => {
-        if (response.data.insertedId) {
-          Swal.fire({
-            title: "Success!",
-            text: "Blog added successfully!",
-            icon: "success",
-            confirmButtonText: "OK",
-          })
-          // form.reset();
-          // setStep(1); // Reset to step 1 after successful submission
-        } else {
-          Swal.fire(
-            "Error!",
-            "Failed to add blog. Please try again.",
-            "error"
-          );
-        }
-      })
+    axiosSecure.post(`/blogs`, formEntries).then((response) => {
+      if (response.data.insertedId) {
+        Swal.fire({
+          title: "Success!",
+          text: "Blog added successfully!",
+          icon: "success",
+          confirmButtonText: "OK",
+        });
+        // form.reset();
+        // setStep(1); // Reset to step 1 after successful submission
+      } else {
+        Swal.fire("Error!", "Failed to add blog. Please try again.", "error");
+      }
+    });
   };
 
   return (
     <motion.div
-    initial={{ opacity: 0, x: 110 }}
-    whileInView={{ opacity: 1, x: 0 }}
-    viewport={{ once: true, amount: 0.1 }}
-    transition={{ duration: 1.5, ease: "easeOut", delay: 0.25 }}
-     className="max-w-md mx-auto mt-0 md:mt-20 p-5 md:p-0">
+      initial={{ opacity: 0, x: 110 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      viewport={{ once: true, amount: 0.1 }}
+      transition={{ duration: 1.5, ease: "easeOut", delay: 0.25 }}
+      className="max-w-md mx-auto mt-0 md:mt-20 p-5 md:p-0"
+    >
       <form
         onSubmit={handleSubmit}
         className=" rounded py-8 px-7 bg-white border-4 border-[#313804]"
@@ -63,10 +57,10 @@ const AddBlogForm = () => {
 
         {/* Step 1 */}
         <motion.div
-         initial={{ opacity: 0, y: 40 }}
-         whileInView={{ opacity: 1, y: 0 }}
-         viewport={{ once: true, amount: 0.1 }}
-         transition={{ duration: 1.5, ease: "easeOut", delay: 1 }}
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.1 }}
+          transition={{ duration: 1.5, ease: "easeOut", delay: 1 }}
           className="space-y-3"
           style={{ display: step === 1 ? "block" : "none" }}
         >
@@ -94,14 +88,14 @@ const AddBlogForm = () => {
             required
             className="w-full p-2 border rounded-r-full rounded-b-full bg-[#dce69b] text-green-950 px-5"
           >
-             <option value="">Select Category</option>
-              <option value="adventure">Adventure</option>
-              <option value="beaches">Beaches</option>
-              <option value="mountains">Mountains</option>
-              <option value="cultural">Cultural</option>
-              <option value="historical">Historical</option>
-              <option value="wildlife">Wildlife</option>
-              <option value="city-tours">City Tours</option>
+            <option value="">Select Category</option>
+            <option value="adventure">Adventure</option>
+            <option value="beaches">Beaches</option>
+            <option value="mountains">Mountains</option>
+            <option value="cultural">Cultural</option>
+            <option value="historical">Historical</option>
+            <option value="wildlife">Wildlife</option>
+            <option value="city-tours">City Tours</option>
           </select>
           <input
             type="text"
@@ -141,10 +135,10 @@ const AddBlogForm = () => {
 
         {/* Step 2 */}
         <motion.div
-         initial={{ opacity: 0, y: 40 }}
-         whileInView={{ opacity: 1, y: 0 }}
-         viewport={{ once: true, amount: 0.1 }}
-         transition={{ duration: 1.5, ease: "easeOut", delay: 0.25 }}
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.1 }}
+          transition={{ duration: 1.5, ease: "easeOut", delay: 0.25 }}
           className="space-y-3"
           style={{ display: step === 2 ? "block" : "none" }}
         >

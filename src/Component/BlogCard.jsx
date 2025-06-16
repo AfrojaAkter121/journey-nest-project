@@ -8,7 +8,6 @@ import Swal from "sweetalert2";
 import { AuthContext } from "../Context/AuthProvider";
 import { useContext } from "react";
 
-
 const BlogCard = ({ blog }) => {
   const navigate = useNavigate();
   const { user } = useContext(AuthContext);
@@ -43,11 +42,12 @@ const BlogCard = ({ blog }) => {
 
   return (
     <motion.div
-    initial={{ opacity: 0, y: 40 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true, amount: 0.1 }}
-    transition={{ duration: 1.5, ease: "easeOut", delay: 0.25 }}
-     className=" relative mb-40 p-5 md:p-0">
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.1 }}
+      transition={{ duration: 1.5, ease: "easeOut", delay: 0.25 }}
+      className=" relative mb-40 p-5 md:p-0"
+    >
       {/* Image */}
       <img
         src={blog.image}

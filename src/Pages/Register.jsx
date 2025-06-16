@@ -10,7 +10,7 @@ import Swal from "sweetalert2";
 const Register = () => {
   const { createUser, setUser, user } = useContext(AuthContext);
   const [error, setError] = useState("");
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -65,22 +65,22 @@ const Register = () => {
   const provider = new GoogleAuthProvider();
   const handleGoogleSignUp = () => {
     signInWithPopup(auth, provider)
-    .then(() => {
-      Swal.fire({
-        title: "Google Signup Success!",
-        icon: "success",
-        draggable: true,
+      .then(() => {
+        Swal.fire({
+          title: "Google Signup Success!",
+          icon: "success",
+          draggable: true,
+        });
+        navigate(`${location.state ? location.state : "/"}`);
+      })
+      .catch((err) => {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: err.message,
+          footer: '<a href="#">Why do I have this issue?</a>',
+        });
       });
-      navigate(`${location.state ? location.state : "/"}`);
-    })
-    .catch((err) => {
-      Swal.fire({
-        icon: "error",
-        title: "Oops...",
-        text: err.message,
-        footer: '<a href="#">Why do I have this issue?</a>',
-      });
-    });
   };
 
   return (

@@ -40,7 +40,6 @@ export default function Header() {
 
   return (
     <header className="relative overflow-hidden min-h-[80vh] rounded-t-2xl">
-
       <AnimatePresence>
         <motion.div
           key={slides[current].id}
@@ -66,7 +65,9 @@ export default function Header() {
                 {slides[current].title.split(" ")[0]}{" "}
                 {slides[current].title.split(" ")[1]}{" "}
               </span>
-              {slides[current].title.slice(slides[current].title.indexOf(" ") + 1)}
+              {slides[current].title.slice(
+                slides[current].title.indexOf(" ") + 1
+              )}
             </motion.h1>
 
             <motion.p

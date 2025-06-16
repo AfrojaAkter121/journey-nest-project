@@ -14,7 +14,6 @@ import UpdateBlogs from "../Pages/UpdateBlogs";
 import NotFound from "../Pages/NotFound";
 import EmployeeProfile from "../Pages/EmployeeProfile";
 
-
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -39,8 +38,12 @@ export const router = createBrowserRouter([
         element: <RegisterPage></RegisterPage>,
       },
       {
-        path: '/myProfile',
-        element: <PrivateRoute><EmployeeProfile></EmployeeProfile></PrivateRoute>,
+        path: "/myProfile",
+        element: (
+          <PrivateRoute>
+            <EmployeeProfile></EmployeeProfile>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/allBlogs",

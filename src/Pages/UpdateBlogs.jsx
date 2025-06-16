@@ -8,7 +8,7 @@ import useAxiosSecure from "../Hooks/useAxiosSecure";
 
 const UpdateBlogs = () => {
   const { user } = use(AuthContext);
-  const axiosSecure = useAxiosSecure()
+  const axiosSecure = useAxiosSecure();
   const blog = useLoaderData();
   const navigate = useNavigate();
 
@@ -17,20 +17,18 @@ const UpdateBlogs = () => {
     const form = e.target;
     const formData = new FormData(form);
     const formEntries = Object.fromEntries(formData.entries());
-console.log(formEntries)
+
     // save the database
-    axiosSecure.put(`/update/${blog._id}`, formEntries
-    )
-    .then(res =>{
-    if(res.data.modifiedCount){
-      Swal.fire({
-        title: "Update!",
-        icon: "success",
-        draggable: true,
-      });
-      navigate("/allBlogs");
-    }
-    })
+    axiosSecure.put(`/update/${blog._id}`, formEntries).then((res) => {
+      if (res.data.modifiedCount) {
+        Swal.fire({
+          title: "Update!",
+          icon: "success",
+          draggable: true,
+        });
+        navigate("/allBlogs");
+      }
+    });
   };
 
   return (

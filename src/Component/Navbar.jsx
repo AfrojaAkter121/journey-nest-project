@@ -48,14 +48,13 @@ export default function Navbar() {
           transition={{ duration: 2, delay: 3, repeat: Infinity }}
           className="flex py-2 pr-10 pl-4 items-center gap-3  rounded-2xl"
         >
-          
           <MdOutlineTravelExplore size={35} className="text-[#414908]" />
           <h1 className="text-xl md:text-4xl font-extrabold flex items-center">
             <span className="text-[#b8d30c] -rotate-12 inline-block tracking-[0.1em]">
               J
             </span>
             <span className="text-[#414908] tracking-[0.1em] ml-1">ourney</span>
-            
+
             <span className="text-[#b8d30c] tracking-[0.1em] ml-1">Nest</span>
           </h1>
         </motion.div>

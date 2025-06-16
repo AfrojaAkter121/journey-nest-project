@@ -5,25 +5,21 @@ import axios from "axios";
 import WishListTable from "../Component/WishListTable";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
 import Lottie from "lottie-react";
-import animation from '../../public/noData.json'; // Adjust the path as necessary
+import animation from "../../public/noData.json"; // Adjust the path as necessary
 
 const WishList = () => {
   const { user, setLoading } = use(AuthContext);
-  const axiosSecure = useAxiosSecure()
-  console.log(user.accessToken);
+  const axiosSecure = useAxiosSecure();
   const [search, setSearch] = useState("");
   const [blogs, setBlogs] = useState([]);
 
-
   useEffect(() => {
     setLoading(true);
-    axiosSecure.get(`/wishlist/${user.email}?searchParams=${search}`
-    )
-      .then((res) => setBlogs(res.data))
+    axiosSecure
+      .get(`/wishlist/${user.email}?searchParams=${search}`)
+      .then((res) => setBlogs(res.data));
     setLoading(false);
   }, [user, search, setLoading, axiosSecure]);
-
-
 
   const handleDelete = (id) => {
     // First confirm with user
@@ -81,7 +77,9 @@ const WishList = () => {
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
-        <h1 className="text-2xl font-bold mb-6 text-[#6c7e13] italic">My Wish List</h1>
+        <h1 className="text-2xl font-bold mb-6 text-[#6c7e13] italic">
+          My Wish List
+        </h1>
         {blogs.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-24">
             {blogs.map((blog) => (
@@ -94,7 +92,10 @@ const WishList = () => {
           </div>
         ) : (
           <div className="flex justify-center items-center">
-            <Lottie style={{width: 600, height: 600}} animationData={animation}></Lottie>
+            <Lottie
+              style={{ width: 600, height: 600 }}
+              animationData={animation}
+            ></Lottie>
           </div>
         )}
       </div>
