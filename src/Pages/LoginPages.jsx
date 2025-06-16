@@ -5,10 +5,13 @@ import login from '../../public/Login.json'
 
 const LoginPages = () => {
     return (
-        <div className='flex justify-around items-center my-10  bg-gradient-to-b from-[white]/40 via-[#e9f1b3] to-[white]/40'
+        <div className='flex flex-col-reverse md:flex-row justify-around items-center my-20  bg-gradient-to-b from-[white]/40 via-[#e9f1b3] to-[white]/40'
         >
             <Login></Login>
-                <Lottie animationData={login} style={{ width: '500px', height: '600px' }}  ></Lottie>
+                
+                <div className='md:w-xl  h-auto'>
+                <Lottie animationData={login} className='w-full'  ></Lottie>
+                </div>
                 
             </div>
     );

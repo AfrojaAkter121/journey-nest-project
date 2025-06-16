@@ -49,7 +49,7 @@ const RecentCard = ({ blog }) => {
   };
 
   return (
-    <div className="bg-[#4c5704]/70 w-lg text-white p-6  rounded-lg  w-full relative overflow-hidden">
+    <div className="bg-[#4c5704]/70 w-sm md:w-lg text-white p-6  rounded-lg relative overflow-hidden">
       <div className="absolute top-0 right-0  h-full bg-white transform rotate-45 translate-x-1/3 -translate-y-1/3 z-0"></div>
 
       <div className="relative z-10 flex flex-col md:flex-row items-center gap-6">

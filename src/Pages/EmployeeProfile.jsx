@@ -42,8 +42,8 @@ const EmployeeProfile = () => {
       });
   };
   return (
-    <div className="relative flex justify-around items-center text-green-950 my-20  bg-gradient-to-b from-[white]/40 via-[#e9f1b3] to-[white]/40 ">
-      <div className=" relative flex flex-col shadow-2xl shadow-[#bdcc6a] w-sm rounded-xl px-8 py-11 bg-white/80 ml-14">
+    <div className="relative flex flex-col-reverse md:flex-row justify-around items-center text-green-950 my-20  bg-gradient-to-b from-[white]/40 via-[#e9f1b3] to-[white]/40 ">
+      <div className=" relative flex flex-col shadow-2xl shadow-[#bdcc6a] w-xs md:w-sm rounded-xl px-8 py-11 bg-white/80 md:ml-14">
       <div className="absolute top-8 left-0 rounded-r-full bg-[#bdcc6a] text-green-900 px-6 py-3 font-semibold text-center">
           <div className=" italic">Update Your Profile</div>
         </div>
@@ -85,8 +85,8 @@ const EmployeeProfile = () => {
           </div>
         </form>
       </div>
-      <div>
-            <Lottie style={{height: 600, width: 600}} animationData={animation}></Lottie>
+      <div className="max-w-3xl">
+            <Lottie className="w-full" animationData={animation}></Lottie>
       </div>
     </div>
   );

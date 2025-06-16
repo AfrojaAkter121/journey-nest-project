@@ -47,7 +47,7 @@ const BlogCard = ({ blog }) => {
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true, amount: 0.1 }}
     transition={{ duration: 1.5, ease: "easeOut", delay: 0.25 }}
-     className=" relative mb-30">
+     className=" relative mb-40 p-5 md:p-0">
       {/* Image */}
       <img
         src={blog.image}
@@ -57,7 +57,7 @@ const BlogCard = ({ blog }) => {
 
       {/* White card - half over image, half outside */}
       <div
-        className="absolute left-1/2 -translate-x-1/2 -bottom-24 hover:-bottom-0 duration-300 w-[90%] hover:w-[100%] rounded-xl p-5
+        className="absolute left-1/2 -translate-x-1/2 -bottom-32 hover:-bottom-8 duration-300 w-[90%] hover:w-[100%] rounded-xl p-5
       bg-white/80 text-green-950 shadow-lg shadow-[#596610] z-10 border border-[#596610]"
       >
         {/* Orange Icon */}

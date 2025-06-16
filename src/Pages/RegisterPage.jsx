@@ -5,9 +5,11 @@ import Register from './Register';
 
 const RegisterPage = () => {
     return (
-        <div className='flex justify-around items-center my-10  bg-gradient-to-b from-[white]/40 via-[#e9f1b3] to-[white]/40'
+        <div className='flex flex-col md:flex-row justify-around items-center my-10  bg-gradient-to-b from-[white]/40 via-[#e9f1b3] to-[white]/40'
     >
-            <Lottie style={{ width: '500px', height: '600px' }}  animationData={register}></Lottie>
+            <div className='md:max-w-xl h-auto'>
+            <Lottie className='w-full' animationData={register}></Lottie>
+            </div>
             
             <Register></Register>
         </div>

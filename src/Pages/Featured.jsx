@@ -94,7 +94,6 @@ console.log(data)
     columns,
     getCoreRowModel: getCoreRowModel(),
     getSortedRowModel: getSortedRowModel(),
-    getPaginationRowModel: getPaginationRowModel(),
     state: { sorting },
     onSortingChange: setSorting,
   });

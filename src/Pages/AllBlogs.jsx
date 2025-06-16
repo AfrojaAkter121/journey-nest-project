@@ -39,11 +39,11 @@ const AllBlogs = () => {
   return (
     <div className="max-w-6xl mx-auto">
      
-     <div className="flex justify-between mt-7">
+     <div className="flex justify-between mt-7 p-4 md:p-0">
      <input
         type="text"
         placeholder="🔍 Search blogs..."
-        className="border px-4 py-2 rounded-lg shadow-md mb-4 w-sm border-2 border-[#465207]  text-green-950"
+        className=" px-4 py-2 rounded-lg shadow-md mb-4 md:w-sm border-2 border-[#465207]  text-green-950"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
       />
@@ -52,7 +52,7 @@ const AllBlogs = () => {
           onChange={(e) => setCategory(e.target.value)}
             name="category"
             required
-            className="border px-4 py-2 rounded-lg shadow-md mb-4 w-sm border-2 border-[#e5e9ce] bg-[#e8f0b6] text-green-950 "
+            className=" px-4 py-2 rounded-lg shadow-md mb-4 md:w-sm border-2 border-[#e5e9ce] bg-[#e8f0b6] text-green-950 "
           >
              <option value="all">All</option>
               <option value="adventure">Adventure</option>

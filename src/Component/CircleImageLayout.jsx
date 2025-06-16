@@ -9,7 +9,7 @@ export default function CircleImageLayout() {
             initial={{y:[10, 0, 10]}}
             animate={{y:[0, 10 , 0]}}
             transition={{duration: 4, repeat: Infinity}}
-             className="text-center w-md text-2xl font-bold italic bg-[#c3d35a]">Discover Stories Around the Globe</motion.h1>
+             className="text-center md:w-md text-2xl font-bold italic bg-[#c3d35a]">Discover Stories Around the Globe</motion.h1>
             <p className="text-center text-[#3e4705] mt-5">Travel brings us together. Each journey tells  a different story — from cozy <br/> cafés in Paris to vibrant street markets in Bangkok. Our global<br/> community of explorers shares real moments, authentic experiences, <br/> and the joy of discovering the unknown.</p>
         </div>
         <div className="relative w-full h-[700px] bg-white overflow-hidden p-20">
@@ -26,7 +26,7 @@ export default function CircleImageLayout() {
             transition={{duration: 5, repeat: Infinity}}
           src="https://i.ibb.co/bMFcYV1H/pexels-tatianasyrikova-3933924.jpg"
           alt=""
-          className="absolute top-20 left-1/3 w-36 h-36 object-cover rounded-full z-10 shadow-md"
+          className="absolute hidden md:block top-20 left-1/3 w-36 h-36 object-cover rounded-full z-10 shadow-md"
         />
         <motion.img
         initial={{x: [40,0,40]}}
@@ -58,7 +58,7 @@ export default function CircleImageLayout() {
          transition={{duration: 5, repeat: Infinity}}
           src="https://i.ibb.co/XkVXrSMR/pexels-paige-deasley-115813531-9789940.jpg"
           alt=""
-          className="absolute bottom-40 left-1/5 w-48 h-48 object-cover rounded-full z-10 shadow-md"
+          className="absolute hidden md:block bottom-40 left-1/5 w-48 h-48 object-cover rounded-full z-10 shadow-md"
         />
         <motion.img
         initial={{y: [50,0,50]}}

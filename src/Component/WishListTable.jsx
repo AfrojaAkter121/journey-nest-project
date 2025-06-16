@@ -21,7 +21,7 @@ const WishListTable = ({handleDelete, blog}) => {
       viewport={{ once: true, amount: 0.1 }}
       whileHover={{ scale: 1.08, transition: { duration: 0.3 } }} 
       transition={{ duration: 1.5, ease: "easeOut", delay: 0.25 }}
-       className="relative flex items-center justify-center bg-white">
+       className="relative flex items-center justify-center bg-white px-7 md:px-0">
       {/* Blurred Price Tag */}
       <div className="absolute left-[-30px] top-10 w-20 h-60 bg-[#9eaa4c] rounded-full blur-md opacity-80 rotate-[-10deg] z-0"></div>
       <div className="absolute left-0 top-10 w-20 h-60 bg-[#9eaa4c] rounded-full flex items-center justify-center rotate-[-10deg] z-10">

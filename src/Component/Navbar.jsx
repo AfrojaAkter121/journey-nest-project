@@ -50,7 +50,7 @@ export default function Navbar() {
         >
           
           <MdOutlineTravelExplore size={35} className="text-[#414908]" />
-          <h1 className="text-4xl font-extrabold flex items-center">
+          <h1 className="text-xl md:text-4xl font-extrabold flex items-center">
             <span className="text-[#b8d30c] -rotate-12 inline-block tracking-[0.1em]">
               J
             </span>
@@ -82,7 +82,7 @@ export default function Navbar() {
                       srcset=""
                     />
                     <h1>{user.displayName}</h1>
-                    <h1 className="break-all">{user.email}</h1>
+                    <h1 className="break-all text-center">{user.email}</h1>
                   </div>
                 )}
 

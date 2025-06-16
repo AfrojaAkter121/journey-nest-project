@@ -52,10 +52,10 @@ const AddBlogForm = () => {
     whileInView={{ opacity: 1, x: 0 }}
     viewport={{ once: true, amount: 0.1 }}
     transition={{ duration: 1.5, ease: "easeOut", delay: 0.25 }}
-     className="max-w-md mx-auto mt-20">
+     className="max-w-md mx-auto mt-0 md:mt-20 p-5 md:p-0">
       <form
         onSubmit={handleSubmit}
-        className=" border rounded py-8 px-7 bg-white border-4 border-[#313804]"
+        className=" rounded py-8 px-7 bg-white border-4 border-[#313804]"
       >
         <h2 className="text-xl font-bold mb-8 italic bg-[#bcce49] text-center w-1/2 mx-auto -rotate-3">
           Add Travel Blog
