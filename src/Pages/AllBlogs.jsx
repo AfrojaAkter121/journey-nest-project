@@ -5,6 +5,7 @@ import { use, useEffect, useState } from "react";
 import axios from "axios";
 import Lottie from "lottie-react";
 import animation from "../../public/noData.json"; // Adjust the path as necessary
+import { Helmet } from "react-helmet-async";
 
 const AllBlogs = () => {
   const { setLoading } = use(AuthContext);
@@ -40,6 +41,9 @@ const AllBlogs = () => {
   return (
     <div className="max-w-6xl mx-auto">
       <div className="flex justify-between mt-7 p-4 md:p-0">
+      <Helmet>
+        <title>All Blogs | JourneyNest</title>
+        </Helmet>
         <input
           type="text"
           placeholder="🔍 Search blogs..."

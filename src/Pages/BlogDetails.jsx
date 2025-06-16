@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router";
 import CommentForm from "../Component/CommentForm";
 import { AuthContext } from "../Context/AuthProvider";
 import { motion } from "framer-motion";
+import { Helmet } from "react-helmet-async";
 
 const BlogDetails = () => {
   const { user } = use(AuthContext);
@@ -18,6 +19,9 @@ const BlogDetails = () => {
 
   return (
     <div className="bg-white py-12 px-4 md:px-16 grid md:grid-cols-2 gap-10 ">
+      <Helmet>
+        <title>Blog Details | JourneyNest</title>
+        </Helmet>
       {/* Left Side */}
       <motion.div
         initial={{ opacity: 0, x: -110 }}

@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { AuthContext } from "../Context/AuthProvider";
 import axios from "axios";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
+import { Helmet } from "react-helmet-async";
 
 const UpdateBlogs = () => {
   const { user } = use(AuthContext);
@@ -39,6 +40,10 @@ const UpdateBlogs = () => {
       transition={{ duration: 1.5, ease: "easeOut", delay: 0.25 }}
       className="flex flex-col md:flex-row w-full min-h-[800px] rounded-xl border-4 border-[#313804] my-10"
     >
+
+<Helmet>
+        <title>Update | JourneyNest</title>
+        </Helmet>
       {/* Right Form Section */}
       <form
         onSubmit={handleUpdate}

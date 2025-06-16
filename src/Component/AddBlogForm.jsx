@@ -31,8 +31,8 @@ const AddBlogForm = () => {
           icon: "success",
           confirmButtonText: "OK",
         });
-        // form.reset();
-        // setStep(1); // Reset to step 1 after successful submission
+        form.reset();
+        setStep(1); // Reset to step 1 after successful submission
       } else {
         Swal.fire("Error!", "Failed to add blog. Please try again.", "error");
       }

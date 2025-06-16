@@ -6,6 +6,7 @@ import { auth } from "../Firebase/firebase";
 import Swal from "sweetalert2";
 import Lottie from "lottie-react";
 import animation from "../../public/profile.json"; // Adjust the path as necessary
+import { Helmet } from "react-helmet-async";
 
 const EmployeeProfile = () => {
   const { user: userData, setUser } = useContext(AuthContext);
@@ -42,6 +43,9 @@ const EmployeeProfile = () => {
   };
   return (
     <div className="relative flex flex-col-reverse md:flex-row justify-around items-center text-green-950 my-20  bg-gradient-to-b from-[white]/40 via-[#e9f1b3] to-[white]/40 ">
+      <Helmet>
+        <title>My Profile | JourneyNest</title>
+        </Helmet>
       <div className=" relative flex flex-col shadow-2xl shadow-[#bdcc6a] w-xs md:w-sm rounded-xl px-8 py-11 bg-white/80 md:ml-14">
         <div className="absolute top-8 left-0 rounded-r-full bg-[#bdcc6a] text-green-900 px-6 py-3 font-semibold text-center">
           <div className=" italic">Update Your Profile</div>

@@ -6,6 +6,7 @@ import { signInWithPopup } from "firebase/auth";
 import { auth } from "../Firebase/firebase";
 import { AuthContext } from "../Context/AuthProvider";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const Register = () => {
   const { createUser, setUser, user } = useContext(AuthContext);
@@ -85,6 +86,9 @@ const Register = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Register Account | JourneyNest</title>
+        </Helmet>
       <div className=" flex items-center justify-center mx-4 md:mx-0 mt-7 md:mt-0">
         <div className="bg-transparent bg-white text-[#0e241a] p-8 rounded-lg shadow-lg w-full max-w-sm border-2   border-[#0e241a]">
           <h2 className="text-2xl -rotate-3 italic bg-[#cbdb5f] font-semibold mb-6 text-center">

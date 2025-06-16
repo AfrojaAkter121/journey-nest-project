@@ -5,10 +5,14 @@ import SlideHoverButton from "./SlideHoverButton";
 import RecentBlogs from "../Component/RecentBlogs";
 import TourGuides from "../Component/TourGuides";
 import TripSection from "../Component/TripSection";
+import { Helmet } from "react-helmet-async";
 
 const Home = () => {
   return (
     <div>
+        <Helmet>
+        <title>Home | JourneyNest</title>
+        </Helmet>
       <Header></Header>
       <div className="bg-[#b0c047] rounded-b-lg">
         <h1 className="p-1 text-center text-xl font-semibold italic">
@@ -16,9 +20,10 @@ const Home = () => {
           🌍✨{" "}
         </h1>
       </div>
-      <CircleImageLayout></CircleImageLayout>
-      <RecentBlogs></RecentBlogs>
       <TripSection></TripSection>
+    
+      <RecentBlogs></RecentBlogs>
+      <CircleImageLayout></CircleImageLayout>
       <TourGuides></TourGuides>
     </div>
   );

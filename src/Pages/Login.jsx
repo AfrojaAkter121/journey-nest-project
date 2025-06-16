@@ -6,6 +6,7 @@ import { signInWithPopup } from "firebase/auth";
 import { AuthContext } from "../Context/AuthProvider";
 import { auth } from "../Firebase/firebase";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const Login = () => {
   const { loginUser } = use(AuthContext);
@@ -63,6 +64,9 @@ const Login = () => {
   return (
     <div>
       <div className=" flex items-center justify-center mt-10 md:mt-5 mx-5 md:mx-0">
+      <Helmet>
+        <title>Log In Account | JourneyNest</title>
+        </Helmet>
         <div className="bg-transparent bg-white text-[#0e241a] p-8 rounded-lg shadow-lg w-full max-w-sm border-2   border-[#0e241a]">
           <h2 className="text-2xl -rotate-3 italic bg-[#cbdb5f] font-semibold mb-6 text-center">
             Login Your Account

@@ -6,6 +6,7 @@ import WishListTable from "../Component/WishListTable";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
 import Lottie from "lottie-react";
 import animation from "../../public/noData.json"; // Adjust the path as necessary
+import { Helmet } from "react-helmet-async";
 
 const WishList = () => {
   const { user, setLoading } = use(AuthContext);
@@ -69,6 +70,9 @@ const WishList = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Wishlist | JourneyNest</title>
+        </Helmet>
       <div className="max-w-6xl mx-auto px-4 py-8">
         <input
           type="text"

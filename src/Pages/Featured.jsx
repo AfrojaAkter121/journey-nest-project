@@ -9,6 +9,7 @@ import {
 import { FaEye } from "react-icons/fa6";
 import { Link } from "react-router";
 import { AuthContext } from "../Context/AuthProvider";
+import { Helmet } from "react-helmet-async";
 
 const Featured = () => {
   const [data, setData] = useState([]);
@@ -104,6 +105,9 @@ const Featured = () => {
 
   return (
     <div className="py-10">
+      <Helmet>
+        <title>Featured Blogs | JourneyNest</title>
+        </Helmet>
       <h2 className="text-xl font-semibold mb-4 italic bg-[#bfce61] px-5 py-2 w-48">
         Featured Blogs
       </h2>
