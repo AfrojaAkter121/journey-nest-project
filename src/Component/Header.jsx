@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { use } from "react";
 import ThemeContext from "../Context/ThemeContext";
+import { Link } from "react-router";
 
 const slides = [
   {
@@ -54,6 +55,8 @@ export default function Header() {
     <header className="relative overflow-hidden min-h-[80vh] rounded-t-2xl">
       <AnimatePresence>
         <motion.div
+        initial={{ x: -80 }}
+        animate={{x: 0 }}
           key={slides[current].id}
           className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: `url(${slides[current].image})` }}
@@ -62,8 +65,7 @@ export default function Header() {
 
           <div className="relative z-20 text-white px-4 md:px-20 py-24 h-full flex flex-col justify-center">
             <motion.h1
-              initial={{ y: -80 }}
-              animate={{ y: 0 }}
+              
               transition={{ duration: 1,  }}
               className="text-2xl sm:text-3xl md:text-5xl font-bold mb-4 italic max-w-xl"
             >
@@ -84,8 +86,8 @@ export default function Header() {
             </p>
 
             <div className="flex flex-wrap gap-3">
-              <button className={btn1Class}>{slides[current].btn1}</button>
-              <button className={btn2Class}>{slides[current].btn2}</button>
+              <Link to='/allBlogs' className={btn1Class}>{slides[current].btn1}</Link>
+              <Link to='featured' className={btn2Class}>{slides[current].btn2}</Link>
             </div>
           </div>
         </motion.div>
