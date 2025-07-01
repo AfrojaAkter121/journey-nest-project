@@ -13,6 +13,7 @@ import BlogDetails from "../Pages/BlogDetails";
 import UpdateBlogs from "../Pages/UpdateBlogs";
 import NotFound from "../Pages/NotFound";
 import EmployeeProfile from "../Pages/EmployeeProfile";
+import TourGuides from "../Component/TourGuides";
 
 export const router = createBrowserRouter([
   {
@@ -80,6 +81,10 @@ export const router = createBrowserRouter([
       {
         path: "/featured",
         element: <Featured></Featured>,
+      },
+      {
+        path: '/guide',
+        Component: TourGuides
       },
       {
         path: "/wishList",

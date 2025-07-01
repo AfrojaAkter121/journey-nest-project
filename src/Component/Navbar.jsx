@@ -8,6 +8,7 @@ import SlideHoverButton from "../Pages/SlideHoverButton";
 import Swal from "sweetalert2";
 import { MdOutlineTravelExplore } from "react-icons/md";
 import ThemeContext from "../Context/ThemeContext";
+import { BsFillCloudSunFill } from "react-icons/bs";
 
 export default function Navbar() {
   const { isDark, toggleTheme } = use(ThemeContext);
@@ -17,7 +18,7 @@ export default function Navbar() {
   // 🌙 Theme-Based Color Variables
   const primaryColor = isDark ? "#DB2777" : "#D7E95D";
   const textPrimary = isDark ? "text-white" : "text-black";
-  const bgPrimary = isDark ? "bg-black" : "bg-white";
+  // const bgPrimary = isDark ? "bg-black" : "bg-white";
   const borderPrimary = isDark ? "border-white/20" : "border-black/10";
   const dropdownBg = isDark
     ? "bg-[#1a1a2e] text-white"
@@ -30,7 +31,7 @@ export default function Navbar() {
   // Profile dropdown card background
   const profileCardBg = isDark
     ? "bg-white/10 text-white"
-    : "bg-black text-black";
+    : "bg-[#D7E95D]/20 text-black";
 
   // Auth Buttons (Sign in, Sign up, Log out)
   const authBtn = isDark
@@ -48,10 +49,11 @@ export default function Navbar() {
   const links = (
     <div className="flex flex-col md:flex-row items-center italic gap-5 py-2">
       <SlideHoverButton text={"Home"} link={""} />
-      <SlideHoverButton text={"Add Blog"} link={"addBlogs"} />
+      {user && <SlideHoverButton text={"Add Blog"} link={"addBlogs"} />}
       <SlideHoverButton text={"AllBlogs"} link={"allBlogs"} />
       <SlideHoverButton text={"Featured"} link={"featured"} />
-      <SlideHoverButton text={"Wishlist"} link={"wishList"} />
+      {!user && <SlideHoverButton text={"Meet with Guide"} link={"guide"}  />}
+      {user && <SlideHoverButton text={"Wishlist"} link={"wishList"} />}
     </div>
   );
 
@@ -60,6 +62,7 @@ export default function Navbar() {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 2 }}
+       className="sticky top-0 z-30 backdrop-blur-xl transition-all duration-300"
     >
       <div
         className={`max-w-7xl mx-auto flex justify-between items-center px-4 py-2 rounded-lg ${textPrimary}`}
@@ -109,7 +112,7 @@ export default function Navbar() {
             className={`text-2xl p-2 rounded-full border transition-colors duration-300 ${themeBtnBg}`}
             title={isDark ? "Switch to Light Mode" : "Switch to Dark Mode"}
           >
-            {isDark ? <FiSun /> : <FiMoon />}
+            {isDark ? <BsFillCloudSunFill/>: <FiMoon />}
           </button>
 
           {/* Profile Menu */}

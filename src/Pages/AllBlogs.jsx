@@ -1,11 +1,12 @@
 import { useLoaderData } from "react-router";
 import { AuthContext } from "../Context/AuthProvider";
 import BlogCard from "../Component/BlogCard";
-import { use, useEffect, useState } from "react";
+import { use, useContext, useEffect, useState } from "react";
 import axios from "axios";
 import Lottie from "lottie-react";
 import animation from "../../public/noData.json"; // Adjust the path as necessary
 import { Helmet } from "react-helmet-async";
+import ThemeContext from "../Context/ThemeContext";
 
 const AllBlogs = () => {
   const { setLoading } = use(AuthContext);
@@ -13,6 +14,10 @@ const AllBlogs = () => {
   const [category, setCategory] = useState("all");
   const [title, setTitle] = useState("");
   const [blogs, setBlogs] = useState(initialBlogs);
+  const { isDark } = useContext(ThemeContext);
+
+  const commonInputClasses =
+    "rounded-full shadow-md mb-4 md:w-64 px-4 py-2 text-sm transition focus:outline-none focus:ring-2";
 
   useEffect(() => {
     const delayDebounce = setTimeout(() => {
@@ -40,23 +45,36 @@ const AllBlogs = () => {
 
   return (
     <div className="max-w-6xl mx-auto">
-      <div className="flex justify-between mt-7 p-4 md:p-0">
-      <Helmet>
-        <title>All Blogs | JourneyNest</title>
+      <div className="flex justify-between mt-10 mb-10 p-4 md:p-0">
+        <Helmet>
+          <title>All Blogs | JourneyNest</title>
         </Helmet>
+        {/* Search Input */}
         <input
           type="text"
           placeholder="🔍 Search blogs..."
-          className=" px-4 py-2 rounded-lg shadow-md mb-4 md:w-sm border-2 border-[#465207]  text-green-950"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
+          className={`${commonInputClasses} 
+          ${
+            isDark
+              ? "bg-[#0f0f1d] border border-[#DB2777] text-[#DB2777] placeholder-[#DB2777]/70 focus:ring-[#DB2777]"
+              : "bg-[#dbe5a5] border border-[#465207] text-green-950 placeholder-green-700 focus:ring-[#465207]"
+          }`}
         />
+
+        {/* Category Select */}
         <select
           value={category}
           onChange={(e) => setCategory(e.target.value)}
           name="category"
           required
-          className=" px-4 py-2 rounded-lg shadow-md mb-4 md:w-sm border-2 border-[#e5e9ce] bg-[#e8f0b6] text-green-950 "
+          className={`${commonInputClasses} 
+          ${
+            isDark
+              ? "bg-[#0f0f1d] border border-[#DB2777] text-[#DB2777] focus:ring-[#DB2777]"
+              : "bg-[#e8f0b6] border border-[#465207] text-green-950"
+          }`}
         >
           <option value="all">All</option>
           <option value="adventure">Adventure</option>

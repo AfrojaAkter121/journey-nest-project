@@ -1,12 +1,12 @@
 import React from "react";
 import { FaEye } from "react-icons/fa6";
 import { MdAutoDelete } from "react-icons/md";
-import { Link } from "react-router"; // ✅ Fix: 'react-router' → 'react-router-dom'
+import { Link } from "react-router";
 import { motion } from "framer-motion";
 
-const WishListTable = ({ handleDelete, blog }) => {
+const WishListTable = ({ blog, handleDelete, isDark }) => {
   const {
-    activities,
+    activities = "",
     bestTimeToVisit,
     category,
     image,
@@ -14,6 +14,9 @@ const WishListTable = ({ handleDelete, blog }) => {
     popularityReason,
     title,
   } = blog;
+  const hoverEffect = isDark
+  ? { scale: 1.05, boxShadow: "0 10px 20px rgba(219, 39, 119, 0.8)" }
+  : { scale: 1.05, boxShadow: "0 10px 20px #cbdb5f" };
 
   const activityList = activities
     .split(",")
@@ -21,68 +24,110 @@ const WishListTable = ({ handleDelete, blog }) => {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 40 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.1 }}
-      whileHover={{ scale: 1.08, transition: { duration: 0.3 } }}
-      transition={{ duration: 1.5, ease: "easeOut", delay: 0.25 }}
-      className="flex items-center justify-center bg-white px-7 md:px-0"
+    initial={{ opacity: 0, y: 30 }}
+    animate={{ opacity: 1, y: 0 }}
+    whileHover={hoverEffect}
+    transition={{ duration: 0.5, ease: "easeOut" }}
+      className={`max-w-xl rounded-xl shadow-lg overflow-hidden border ${
+        isDark ? "bg-[#0f0f1d] border-[#DB2777]" : "bg-white border-gray-300"
+      }`}
+      style={{ height: "280px", width: "100%" }}
     >
-      {/* Decorative left bar */}
-      <div className="relative w-full max-w-md bg-gradient-to-b from-[#e4e9c9] to-white rounded-3xl shadow-lg p-6 flex flex-col justify-between">
-        {/* Blurred Decoration */}
-        <div className="absolute left-[-30px] top-10 w-20 h-60 bg-[#9eaa4c] rounded-full blur-md opacity-80 rotate-[-10deg] z-0"></div>
-        <div className="absolute left-0 top-10 w-20 h-60 bg-[#9eaa4c] rounded-full flex items-center justify-center rotate-[-10deg] z-10">
-          <span className="text-white text-sm font-semibold transform -rotate-90 whitespace-nowrap"></span>
-        </div>
-
-        {/* Main Content */}
-        <div className="z-20">
+      <div className="flex flex-col md:flex-row h-full">
+        {/* Image Section */}
+        <div className="md:w-1/3 flex-shrink-0 p-3">
           <img
-            className="h-40 w-full object-cover rounded-t-lg mb-4"
             src={image}
-            alt="Blog"
+            alt={title}
+            className="w-full h-full object-cover rounded-lg"
           />
-          <h2 className="text-lg italic text-white bg-[#586314] text-center mb-4">
-            {title}
-          </h2>
-          <p className="text-gray-600 mb-2">Category: {category}</p>
-          <p className="text-gray-600 mb-2">Place: {placeName}</p>
-          <p className="text-gray-600 mb-2">
-            Best Time to Visit: {bestTimeToVisit}
-          </p>
-          <p className="text-gray-600 mb-2">
-            Popularity Reason: {popularityReason}
-          </p>
-
-          {/* Activity Tags */}
-          <div className="flex flex-wrap gap-2 mt-4">
-            {activityList.map((activity, index) => (
-              <span
-                key={index}
-                className="bg-[#d9ddbd] text-[#313804] text-sm font-medium px-3 py-1 rounded-full"
-              >
-                {activity}
-              </span>
-            ))}
-          </div>
         </div>
 
-        {/* Action Buttons */}
-        <div className="flex justify-between items-center mt-6">
-          <Link
-            to={`/blogs/${blog.blogId}`}
-            className="bg-[#dde797] text-white rounded-full p-2 hover:bg-[#313804] transition"
-          >
-            <FaEye className="text-green-950 hover:text-white" />
-          </Link>
+        {/* Details Section */}
+        <div className="md:w-2/3 p-5 flex flex-col justify-between">
+          <div>
+            <h3
+              className={`text-xl font-bold ${
+                isDark ? "text-[#DB2777]" : "text-gray-900"
+              } italic mb-3 truncate`}
+              title={title}
+            >
+              {title}
+            </h3>
 
-          <button
-            onClick={() => handleDelete(blog._id)}
-            className="bg-[#313804] text-white rounded-full p-3 hover:bg-red-700 transition cursor-pointer"
-          >
-            <MdAutoDelete size={20} />
-          </button>
+            <p
+              className={`text-sm font-semibold ${
+                isDark ? "text-white" : "text-gray-700"
+              }`}
+            >
+              Category: <span className="font-normal">{category}</span>
+            </p>
+            <p
+              className={`text-sm font-semibold ${
+                isDark ? "text-white" : "text-gray-700"
+              }`}
+            >
+              Place: <span className="font-normal">{placeName}</span>
+            </p>
+            <p
+              className={`text-sm font-semibold ${
+                isDark ? "text-white" : "text-gray-700"
+              }`}
+            >
+              Best Time: <span className="font-normal">{bestTimeToVisit}</span>
+            </p>
+            <p
+              className={`text-sm font-semibold truncate ${
+                isDark ? "text-white" : "text-gray-700"
+              }`}
+              title={popularityReason}
+            >
+              Popularity Reason: <span className="font-normal">{popularityReason}</span>
+            </p>
+
+            {/* Activities */}
+            <div className="flex flex-wrap gap-2 mt-3 max-h-14 overflow-y-auto">
+              {activityList.map((act, idx) => (
+                <span
+                  key={idx}
+                  className={`text-xs px-3 py-1 rounded-full font-semibold cursor-default select-none ${
+                    isDark
+                      ? "bg-[#DB2777] text-[#0f0f1d]"
+                      : "bg-gray-200 text-gray-800"
+                  }`}
+                >
+                  {act}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          {/* Actions */}
+          <div className="flex justify-between mt-5">
+            <Link
+              to={`/blogs/${blog.blogId}`}
+              className={`px-4 py-2 rounded-full font-semibold transition ${
+                isDark
+                  ? "bg-[#DB2777] text-[#0f0f1d] hover:bg-[#a72169]"
+                  : "bg-green-600 text-white hover:bg-green-700"
+              }`}
+            >
+              <FaEye className="inline-block mr-2" />
+              View
+            </Link>
+
+            <button
+              onClick={() => handleDelete(blog._id)}
+              className={`px-4 py-2 rounded-full font-semibold transition ${
+                isDark
+                  ? "bg-[#0f0f1d] border border-[#DB2777] text-[#DB2777] hover:bg-[#DB2777] hover:text-[#0f0f1d]"
+                  : "bg-red-600 text-white hover:bg-red-700"
+              }`}
+            >
+              <MdAutoDelete className="inline-block mr-2" />
+              Delete
+            </button>
+          </div>
         </div>
       </div>
     </motion.div>

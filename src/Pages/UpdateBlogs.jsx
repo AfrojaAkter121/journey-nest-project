@@ -1,13 +1,15 @@
-import React, { use } from "react";
+import React, { useContext } from "react";
 import { useLoaderData, useNavigate } from "react-router";
 import Swal from "sweetalert2";
 import { motion } from "framer-motion";
 import { AuthContext } from "../Context/AuthProvider";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
 import { Helmet } from "react-helmet-async";
+import ThemeContext from "../Context/ThemeContext";
 
 const UpdateBlogs = () => {
-  const { user } = use(AuthContext);
+  const { user } = useContext(AuthContext);
+  const { isDark } = useContext(ThemeContext);
   const axiosSecure = useAxiosSecure();
   const blog = useLoaderData();
   const navigate = useNavigate();
@@ -18,14 +20,12 @@ const UpdateBlogs = () => {
     const formData = new FormData(form);
     const formEntries = Object.fromEntries(formData.entries());
 
-    // save the database
     axiosSecure.put(`/update/${blog._id}`, formEntries).then((res) => {
       if (res.data.modifiedCount) {
         Swal.fire({
-          title: "Update!",
+          title: "Updated!",
           icon: "success",
-          draggable: true,
-        }); 
+        });
         navigate("/allBlogs");
       }
     });
@@ -33,41 +33,47 @@ const UpdateBlogs = () => {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 40, scale: 0.8 }}
+      initial={{ opacity: 0, y: 40, scale: 0.9 }}
       whileInView={{ opacity: 1, y: 0, scale: 1 }}
       viewport={{ once: true, amount: 0 }}
       transition={{ duration: 1.5, ease: "easeOut", delay: 0.25 }}
-      className="flex flex-col md:flex-row w-full min-h-[800px] rounded-xl border-4 border-[#313804] my-10"
+      className={`flex flex-col md:flex-row w-full min-h-[800px] rounded-xl border-4 
+        ${isDark ? "border-[#DB2777] bg-[#0f0f1d]" : "border-[#313804] bg-white"} my-10`}
     >
-
-<Helmet>
+      <Helmet>
         <title>Update | JourneyNest</title>
-        </Helmet>
-      {/* Right Form Section */}
+      </Helmet>
+
+      {/* Form Section */}
       <form
         onSubmit={handleUpdate}
-        className="w-full md:w-1/2 p-12 bg-white flex flex-col justify-center"
+        className="w-full md:w-1/2 p-10 flex flex-col justify-center"
       >
-        <h2 className="text-2xl text-[#313804] font-semibold font-bold mb-4">
-          Update Your travel blog
+        <h2
+          className={`text-2xl font-bold mb-6 ${isDark ? "" : "text-[#313804]"}`}
+        >
+          Update Your Travel Blog
         </h2>
 
+        {/* Grouped Inputs */}
         <div className="mb-6">
-          <label className="text-sm font-semibold text-[#313804]">
-            Blog title And Category
+          <label className={`text-sm font-semibold ${isDark ? "" : "text-[#313804]"}`}>
+            Blog Title & Category
           </label>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
+          <div className="grid md:grid-cols-2 gap-4 mt-2">
             <input
               name="title"
-              placeholder="Blog Title"
               defaultValue={blog.title}
-              className="border-2 border-[#313804] focus:border-teal-500 focus:outline-none px-4 py-2 rounded text-[#4f5a0b] font-semibold transition duration-500"
+              placeholder="Blog Title"
+              className={`px-4 py-2 rounded font-medium transition duration-300 
+                ${isDark ? "bg-[#1a1a2e] text-[#c7b2bc] border border-[#DB2777]" : "border-2 border-[#313804] text-[#4f5a0b]"}`}
               required
             />
             <select
               name="category"
               defaultValue={blog.category}
-              className="border-2 border-[#313804] focus:border-teal-500 focus:outline-none px-4 py-2 rounded text-[#4f5a0b] font-semibold transition duration-500"
+              className={`px-4 py-2 rounded font-medium transition duration-300 
+                ${isDark ? "bg-[#1a1a2e] text-[#c7b2bc] border border-[#DB2777]" : "border-2 border-[#313804] text-[#4f5a0b]"}`}
               required
             >
               <option value="">Select Category</option>
@@ -82,126 +88,105 @@ const UpdateBlogs = () => {
           </div>
         </div>
 
+        {/* Single Inputs */}
         <div className="mb-6">
-          <label className="text-sm font-semibold text-[#313804]">
-            popularityReason
+          <label className={`text-sm font-semibold ${isDark ? "" : "text-[#313804]"}`}>
+            Why is it popular?
           </label>
           <input
             name="popularityReason"
             defaultValue={blog.popularityReason}
-            placeholder="popularityReason"
-            className="w-full border-2 border-[#313804] focus:border-teal-500 focus:outline-none px-4 py-2 rounded text-[#4f5a0b] font-semibold transition duration-500"
+            className={`w-full px-4 py-2 rounded font-medium transition duration-300 
+              ${isDark ? "bg-[#1a1a2e] text-[#c7b2bc] border border-[#DB2777]" : "border-2 border-[#313804] text-[#4f5a0b]"}`}
             required
           />
         </div>
 
         <div className="mb-6">
-          <label className="text-sm font-semibold text-[#313804]">
-            Locaion & BestTime & Activities
+          <label className={`text-sm font-semibold ${isDark ? "" : "text-[#313804]"}`}>
+            Location, Best Time & Activities
           </label>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-2">
-            <input
-              name="placeName"
-              defaultValue={blog.placeName}
-              placeholder="placeName"
-              className="border-2 border-[#313804] focus:border-teal-500 focus:outline-none px-4 py-2 rounded text-[#4f5a0b] font-semibold transition duration-500"
-              required
-            />
-            <input
-              type="text"
-              name="bestTimeToVisit"
-              defaultValue={blog.bestTimeToVisit}
-              placeholder="bestTimeToVisit"
-              className="border-2 border-[#313804] focus:border-teal-500 focus:outline-none px-4 py-2 rounded text-[#4f5a0b] font-semibold transition duration-500"
-              required
-            />
-            <input
-              type="text"
-              name="activities"
-              defaultValue={blog.activities}
-              placeholder="activities"
-              className="border-2 border-[#313804] focus:border-teal-500 focus:outline-none px-4 py-2 rounded text-[#4f5a0b] font-semibold transition duration-500"
-              required
-            />
+          <div className="grid md:grid-cols-3 gap-4 mt-2">
+            {["placeName", "bestTimeToVisit", "activities"].map((field) => (
+              <input
+                key={field}
+                name={field}
+                defaultValue={blog[field]}
+                placeholder={field}
+                className={`px-4 py-2 rounded font-medium transition duration-300 
+                  ${isDark ? "bg-[#1a1a2e] text-[#c7b2bc] border border-[#DB2777]" : "border-2 border-[#313804] text-[#4f5a0b]"}`}
+                required
+              />
+            ))}
           </div>
         </div>
 
         <div className="mb-6">
-          <label className="text-sm font-semibold text-[#313804]">
+          <label className={`text-sm font-semibold ${isDark ? "" : "text-[#313804]"}`}>
             Description
           </label>
-          <textarea
-            name="long_description"
-            defaultValue={blog.long_description}
-            placeholder="long_description"
-            className="w-full border-2 border-[#313804] focus:border-teal-500 focus:outline-none px-4 py-2 rounded text-[#4f5a0b] font-semibold transition duration-500"
-            required
-          />
-          <textarea
-            name="short_description"
-            defaultValue={blog.short_description}
-            placeholder="short_description"
-            className="w-full border-2 border-[#313804] focus:border-teal-500 focus:outline-none px-4 py-2 rounded text-[#4f5a0b] font-semibold transition duration-500"
-            required
-          />
+          {["long_description", "short_description"].map((field) => (
+            <textarea
+              key={field}
+              name={field}
+              defaultValue={blog[field]}
+              placeholder={field}
+              className={`w-full mt-2 px-4 py-2 rounded font-medium transition duration-300 
+                ${isDark ? "bg-[#1a1a2e] text-[#c7b2bc] border border-[#DB2777]" : "border-2 border-[#313804] text-[#4f5a0b]"}`}
+              required
+            />
+          ))}
         </div>
 
         <div className="mb-6">
-          <label className="text-sm font-semibold text-[#313804]">
-            User Name and Email
+          <label className={`text-sm font-semibold ${isDark ? "" : "text-[#313804]"}`}>
+            User Info
           </label>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
+          <div className="grid md:grid-cols-2 gap-4 mt-2">
             <input
               name="userName"
               defaultValue={user.displayName}
               readOnly
-              className="w-full border-2 border-[#313804] focus:border-teal-500 focus:outline-none px-4 py-2 rounded text-[#4f5a0b] font-semibold transition duration-500"
+              className={`w-full px-4 py-2 rounded font-medium 
+                ${isDark ? "bg-[#1a1a2e] text-[#c7b2bc] border border-[#DB2777]" : "border-2 border-[#313804] text-[#4f5a0b]"}`}
             />
             <input
               name="userEmail"
               defaultValue={user.email}
               readOnly
-              className="w-full border-2 border-[#313804] focus:border-teal-500 focus:outline-none px-4 py-2 rounded text-[#4f5a0b] font-semibold transition duration-500"
+              className={`w-full px-4 py-2 rounded font-medium 
+                ${isDark ? "bg-[#1a1a2e] text-[#c7b2bc] border border-[#DB2777]" : "border-2 border-[#313804] text-[#4f5a0b]"}`}
             />
           </div>
-          <div></div>
         </div>
 
-        <div className="mb-8">
-          <label className="text-sm font-semibold text-[#313804]">
-            Photo Url
+        <div className="mb-6">
+          <label className={`text-sm font-semibold ${isDark ? "" : "text-[#313804]"}`}>
+            Image URL
           </label>
           <input
             name="image"
             defaultValue={blog.image}
             placeholder="Image URL"
-            className="w-full border-2 border-[#313804] focus:border-teal-500 focus:outline-none px-4 py-2 rounded text-[#4f5a0b] font-semibold transition duration-500"
+            className={`w-full px-4 py-2 rounded font-medium 
+              ${isDark ? "bg-[#1a1a2e]  border border-[#DB2777]" : "border-2 border-[#313804] text-[#4f5a0b]"}`}
             required
           />
         </div>
 
-        <div className="flex items-center gap-6">
-          <button
-            type="submit"
-            className="px-6 w-full py-3 mt-8 rounded-full bg-gradient-to-r from-[#313804] via-[#5f6b0e] to-[#64720d] text-white font-medium shadow-md hover:scale-105 transition-transform"
-          >
-            Update Group
-          </button>
-        </div>
-
-        <div className="mt-8 flex justify-center gap-2">
-          <div className="w-2 h-2 rounded-full bg-[#ccc]"></div>
-          <div className="w-2 h-2 rounded-full bg-[#ccc]"></div>
-          <div className="w-2 h-2 rounded-full bg-[#cc5e33]"></div>
-        </div>
+        <button
+          type="submit"
+          className={`w-full py-3 mt-8 rounded-full font-medium shadow-md transition-transform hover:scale-105 
+            ${isDark ? "bg-[#DB2777] text-[#0f0f1d]" : "bg-gradient-to-r from-[#313804] via-[#5f6b0e] to-[#64720d] text-white"}`}
+        >
+          Update Blog
+        </button>
       </form>
 
-      {/* Left Image Section */}
+      {/* Image Side */}
       <div
-        className="w-full md:w-1/2  min-h-[800px]  bg-cover bg-center "
-        style={{
-          backgroundImage: `url(${blog.image})`,
-        }}
+        className="w-full md:w-1/2 min-h-[800px] bg-cover bg-center rounded-r-xl"
+        style={{ backgroundImage: `url(${blog.image})` }}
       ></div>
     </motion.div>
   );

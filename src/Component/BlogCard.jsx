@@ -1,16 +1,18 @@
 import { MdCategory, MdFlightTakeoff } from "react-icons/md";
 import { motion } from "framer-motion";
 import { Link, useNavigate } from "react-router";
-import { FaHeading, FaLocationDot } from "react-icons/fa6";
+import { FaLocationDot } from "react-icons/fa6";
 import { TbTypography } from "react-icons/tb";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { AuthContext } from "../Context/AuthProvider";
 import { useContext } from "react";
+import ThemeContext from "../Context/ThemeContext";
 
 const BlogCard = ({ blog }) => {
   const navigate = useNavigate();
   const { user } = useContext(AuthContext);
+  const { isDark } = useContext(ThemeContext);
 
   const wishData = {
     ...blog,
@@ -31,11 +33,7 @@ const BlogCard = ({ blog }) => {
         if (err.response?.status === 409) {
           Swal.fire("Oops!", "Already in wishlist!", "info");
         } else {
-          Swal.fire(
-            "Error",
-            err.response?.data?.message || "Something went wrong",
-            "error"
-          );
+          Swal.fire("Error", err?.response?.data?.message || "Failed", "error");
         }
       });
   };
@@ -44,62 +42,72 @@ const BlogCard = ({ blog }) => {
     <motion.div
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
+      whileHover={{
+        scale: 1.05,
+        boxShadow: "0 10px 20px rgba(219, 39, 119, 0.5)",
+      }}
       viewport={{ once: true, amount: 0.1 }}
       transition={{ duration: 1.5, ease: "easeOut", delay: 0.25 }}
-      className=" relative mb-40 p-5 md:p-0"
+      className="relative mb-40 p-5 md:p-0"
     >
       {/* Image */}
       <img
         src={blog.image}
-        alt="Bike Freight"
-        className="w-full h-62 object-cover rounded-t-lg"
+        alt="Blog"
+        className="w-full h-60 object-cover rounded-t-xl"
       />
 
-      {/* White card - half over image, half outside */}
+      {/* Card Body */}
       <div
-        className="absolute left-1/2 -translate-x-1/2 -bottom-32 hover:-bottom-8 duration-300 w-[90%] hover:w-[100%] rounded-xl p-5
-      bg-white/80 text-green-950 shadow-lg shadow-[#596610] z-10 border border-[#596610]"
+        className={`absolute left-1/2 -translate-x-1/2 -bottom-32 hover:-bottom-8 duration-300 w-[90%] hover:w-[100%] rounded-xl p-5 z-10 border shadow-lg
+        ${isDark
+            ? "bg-[#0f0f1d] text-white border-[#DB2777] shadow-[#DB2777]/30"
+            : "bg-white/80 text-green-950 border-[#596610] shadow-[#596610]"
+        }`}
       >
-        {/* Orange Icon */}
+        {/* Floating Icon */}
         <motion.div
           initial={{ y: [0, -10, 0] }}
           animate={{ y: [-10, 0, -10] }}
           transition={{ duration: 3, repeat: Infinity }}
-          className="w-14 h-14 bg-[#c1d443] text-green-950 rounded-full flex items-center justify-center -mt-10 mx-auto shadow-md"
+          className={`w-14 h-14 rounded-full flex items-center justify-center -mt-10 mx-auto shadow-md 
+          ${isDark ? "bg-[#DB2777] text-[#0f0f1d]" : "bg-[#c1d443] text-green-950"}`}
         >
-          <MdFlightTakeoff className=" text-2xl" />
+          <MdFlightTakeoff className="text-2xl" />
         </motion.div>
 
         {/* Content */}
         <h1 className="text-center mt-3 font-semibold flex items-center gap-2">
-          <MdCategory></MdCategory> {blog.category}
+          <MdCategory /> {blog.category}
         </h1>
-        <h3 className=" text-lg  flex items-center gap-2">
-          <TbTypography></TbTypography>
-          {blog.title}
+        <h3 className="text-lg flex items-center gap-2">
+          <TbTypography /> {blog.title}
         </h3>
-        <div className="">
-          <h3 className="text-center font-semibold flex items-center gap-2">
-            <FaLocationDot />
-            {blog.placeName}
-          </h3>
-        </div>
-        <p className="text-sm mt-1 break-words line-clamp-3">
+        <h3 className="text-center font-semibold flex items-center gap-2">
+          <FaLocationDot /> {blog.placeName}
+        </h3>
+        <p className="text-sm mt-1 line-clamp-3 break-words">
           {blog.short_description}
         </p>
-        <div className=" mt-6 flex items-center gap-3">
+
+        {/* Buttons */}
+        <div className="mt-6 flex items-center gap-3 justify-center">
           <Link
-            className="bg-[#c1d443] text-green-950 py-1 px-3 rounded-lg italic"
             to={`/blogs/${blog._id}`}
+            className={`py-1 px-4 rounded-full italic font-medium transition
+              ${isDark ? "bg-[#DB2777] text-[#0f0f1d]" : "bg-[#c1d443] text-green-950"}`}
           >
             Details
           </Link>
-          <Link
+          <button
             onClick={handleAddWishlist}
-            className="border border-[#4a521b] py-1 px-3 rounded-lg italic"
+            className={`py-1 px-4 rounded-full italic border transition
+              ${isDark
+                ? "border-[#DB2777] text-white"
+                : "border-[#4a521b] text-green-950"}`}
           >
-            WishList
-          </Link>
+            Wishlist
+          </button>
         </div>
       </div>
     </motion.div>
