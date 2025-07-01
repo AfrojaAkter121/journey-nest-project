@@ -1,3 +1,4 @@
+import React, { use, useContext } from "react";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";
 import {
@@ -7,6 +8,7 @@ import {
   FaLinkedinIn,
 } from "react-icons/fa";
 import { motion } from "framer-motion";
+import ThemeContext from "../Context/ThemeContext"; // Adjust this path if needed
 
 const guides = [
   {
@@ -115,70 +117,109 @@ const guides = [
   },
 ];
 
-const GuideCard = ({ guide }) => (
-  <div className=" bg-white text-[#0e241a] rounded-xl shadow-md shadow-[#5e6916] p-6 transform transition duration-300 hover:scale-105">
-    <div className="relative">
-      <img
-        src={guide.photo}
-        alt={guide.name}
-        className="rounded-t-xl w-full h-48 object-cover"
-      />
-      {guide.isOnline && (
-        <span className="absolute top-2 right-2 bg-green-600 text-white text-xs px-2 py-1 rounded-full">
-          Online
-        </span>
-      )}
-    </div>
-    <div className="text-center">
-      <h2 className="text-xl font-bold bg-[#cbdb5f] text-[#0e241a] italic">
-        {guide.name}
-      </h2>
-      <p className="mt-2 text-lg">{guide.description}</p>
-      <p className="text-sm">
-        <span className="font-semibold">Specialty:</span> {guide.specialty}
-      </p>
-      <p className="text-sm">
-        <span className="font-semibold">Languages:</span>{" "}
-        {guide.languages.join(", ")}
-      </p>
-      <div className="flex justify-around items-center mt-7">
-        <p className="text-sm ">{guide.location}</p>
-        <p className="text-sm mt-2">
-          <span className="font-semibold">⭐</span> {guide.rating} / 5
+const GuideCard = ({ guide }) => {
+  const { isDark } = useContext(ThemeContext);
+
+  return (
+    <div
+      className={`rounded-xl p-6 transform transition duration-300 hover:scale-105 shadow-md ${
+        isDark
+          ? "bg-[#1a1a2e] text-white shadow-[#e75a97]"
+          : "bg-white text-[#0e241a] shadow-[#5e6916]"
+      }`}
+    >
+      <div className="relative">
+        <img
+          src={guide.photo}
+          alt={guide.name}
+          className="rounded-t-xl w-full h-48 object-cover"
+        />
+        {guide.isOnline && (
+          <span className="absolute top-2 right-2 bg-green-600 text-white text-xs px-2 py-1 rounded-full">
+            Online
+          </span>
+        )}
+      </div>
+      <div className="text-center">
+        <h2
+          className={`text-xl font-bold italic mt-4 rounded-md p-1 ${
+            isDark ? "bg-[#c41c65] text-white" : "bg-[#cbdb5f] text-[#0e241a]"
+          }`}
+        >
+          {guide.name}
+        </h2>
+        <p className="mt-2 text-lg">{guide.description}</p>
+        <p className="text-sm">
+          <span className="font-semibold">Specialty:</span> {guide.specialty}
         </p>
+        <p className="text-sm">
+          <span className="font-semibold">Languages:</span>{" "}
+          {guide.languages.join(", ")}
+        </p>
+        <div className="flex justify-around items-center mt-7">
+          <p className="text-sm ">{guide.location}</p>
+          <p className="text-sm mt-2">
+            <span className="font-semibold">⭐</span> {guide.rating} / 5
+          </p>
+        </div>
+      </div>
+
+      <div className="flex justify-center gap-3 mt-7">
+        <button
+          className={`rounded-full p-2 cursor-pointer ${
+            isDark
+              ? "bg-[#c41c65] text-white"
+              : "bg-[#cbdb5f] text-[#0e241a]"
+          }`}
+        >
+          <FaFacebookF size={20} />
+        </button>
+        <button
+          className={`rounded-full p-2 cursor-pointer ${
+            isDark
+              ? "bg-[#c41c65] text-white"
+              : "bg-[#cbdb5f] text-[#0e241a]"
+          }`}
+        >
+          <FaInstagram size={20} />
+        </button>
+        <button
+          className={`rounded-full p-2 cursor-pointer ${
+            isDark
+              ? "bg-[#c41c65] text-white"
+              : "bg-[#cbdb5f] text-[#0e241a]"
+          }`}
+        >
+          <FaTwitter size={20} />
+        </button>
+        <button
+          className={`rounded-full p-2 cursor-pointer ${
+            isDark
+              ? "bg-[#c41c65] text-white"
+              : "bg-[#cbdb5f] text-[#0e241a]"
+          }`}
+        >
+          <FaLinkedinIn size={20} />
+        </button>
       </div>
     </div>
-
-    <div className="flex justify-center gap-3 mt-7">
-      <button className=" bg-[#cbdb5f] text-[#0e241a] rounded-full p-2 cursor-pointer">
-        <FaFacebookF size={20} />
-      </button>
-      <button className=" bg-[#cbdb5f] text-[#0e241a] rounded-full p-2 cursor-pointer">
-        <FaInstagram size={20} />
-      </button>
-      <button className=" bg-[#cbdb5f] text-[#0e241a] rounded-full p-2 cursor-pointer">
-        <FaTwitter size={20} />
-      </button>
-      <button className=" bg-[#cbdb5f] text-[#0e241a] rounded-full p-2 cursor-pointer">
-        <FaLinkedinIn size={20} />
-      </button>
-    </div>
-  </div>
-);
+  );
+};
 
 const TourGuides = () => {
-  // Group guides by 4 per slide
+  const {isDark} = use(ThemeContext)
+  // Group guides by 3 per slide
   const groupedGuides = [];
   for (let i = 0; i < guides.length; i += 3) {
     groupedGuides.push(guides.slice(i, i + 3));
   }
 
   return (
-    <div className="relative py-16  text-center">
+    <div className="relative py-16 mt-10  text-center">
       <h2 className="text-xl italic ">Meet with Guide</h2>
-      <h1 className="text-3xl italic text-[#414908] ">
-        🌍 A great guide turns a trip into a story worth remembering.
-      </h1>
+      <h1 className={`text-3xl italic ${isDark ? 'text-[#da3f82]' : 'text-[#414908]'}`}>
+  🌍 A great guide turns a trip into a story worth remembering.
+</h1>
       <p className="flex justify-center text-center mb-10">
         Our experienced tour guides don’t just lead the way — they bring
         destinations to life with deep knowledge, <br /> local insights, and a

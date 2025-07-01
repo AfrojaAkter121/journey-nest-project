@@ -55,7 +55,7 @@ const TripSection = () => {
           {/* Features */}
           <div className="space-y-4">
             <div className="flex items-start gap-3">
-              <BsFillPatchCheckFill className="text-[#c41c65] mt-1" size={20} />
+              <BsFillPatchCheckFill className={`${isDark ? 'text-[#c41c65] ': 'text-[#49500c]'}mt-1`} size={20} />
               <div>
                 <h4 className={`font-bold text-lg ${featureTitleColor}`}>Exclusive Trip</h4>
                 <p className={`text-sm ${featureDescColor}`}>
@@ -65,7 +65,7 @@ const TripSection = () => {
               </div>
             </div>
             <div className="flex items-start gap-3">
-              <BsFillPatchCheckFill className="text-[#c41c65] mt-1" size={20} />
+              <BsFillPatchCheckFill className={`${isDark ? 'text-[#c41c65] ': 'text-[#49500c]'}mt-1`} size={20} />
               <div>
                 <h4 className={`font-bold text-lg ${featureTitleColor}`}>Professional Guide</h4>
                 <p className={`text-sm ${featureDescColor}`}>

@@ -1,6 +1,10 @@
 import { motion } from "framer-motion";
+import { useContext } from "react";
+import ThemeContext from "../Context/ThemeContext";
 
 export default function CircleImageLayout() {
+  const { isDark } = useContext(ThemeContext);
+
   return (
     <div className="mt-20">
       <div className="flex flex-col justify-center items-center">
@@ -8,11 +12,17 @@ export default function CircleImageLayout() {
           initial={{ y: [10, 0, 10] }}
           animate={{ y: [0, 10, 0] }}
           transition={{ duration: 4, repeat: Infinity }}
-          className="text-center md:w-md text-2xl font-bold italic bg-[#c3d35a]"
+          className={`text-center md:w-md text-2xl font-bold italic ${
+            isDark ? "bg-[#c41c65] text-white" : "bg-[#c3d35a] text-black"
+          }`}
         >
           Discover Stories Around the Globe
         </motion.h1>
-        <p className="text-center text-[#3e4705] mt-5">
+        <p
+          className={`${
+            isDark ? "text-gray-300" : "text-[#3e4705]"
+          } text-center mt-5`}
+        >
           Travel brings us together. Each journey tells a different story — from
           cozy <br /> cafés in Paris to vibrant street markets in Bangkok. Our
           global
@@ -20,13 +30,25 @@ export default function CircleImageLayout() {
           experiences, <br /> and the joy of discovering the unknown.
         </p>
       </div>
-      <div className="relative w-full h-[700px] bg-white overflow-hidden p-20">
+      <div className={`relative w-full h-[700px] overflow-hidden p-20`}>
         {/* Background Soft Circles */}
-        <div className="absolute top-100 left-90 w-48 h-48 bg-[#e7f398] rounded-full z-0"></div>
-        <div className="absolute top-20 right-90 w-72 h-72 bg-[#e7f398] rounded-full z-0"></div>
-        <div className="absolute bottom-40 right-60 w-40 h-40 bg-[#e7f398] rounded-full z-0"></div>
+        <div
+          className={`absolute top-100 left-90 w-48 h-48 rounded-full z-0 ${
+            isDark ? "bg-[#db6a9b]" : "bg-[#e7f398]"
+          }`}
+        ></div>
+        <div
+          className={`absolute top-20 right-90 w-72 h-72 rounded-full z-0 ${
+            isDark ? "bg-[#db6a9b]" : "bg-[#e7f398]"
+          }`}
+        ></div>
+        <div
+          className={`absolute bottom-40 right-60 w-40 h-40 rounded-full z-0 ${
+            isDark ? "bg-[#db6a9b]" : "bg-[#e7f398]"
+          }`}
+        ></div>
 
-        {/* Circle Images */}
+        {/* Circle Images (unchanged) */}
         <motion.img
           initial={{ x: [40, 0, 40] }}
           animate={{ x: [0, 40, 0] }}
