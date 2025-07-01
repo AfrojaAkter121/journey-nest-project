@@ -90,6 +90,7 @@ const CommentForm = ({ postId, blog }) => {
       {submitting && (
         <p className="text-sm text-gray-500 mb-4">Posting comment...</p>
       )}
+      
 
       {/* Comment list */}
       <div className="space-y-6 max-h-60 overflow-y-auto">

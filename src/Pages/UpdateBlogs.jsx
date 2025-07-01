@@ -3,7 +3,6 @@ import { useLoaderData, useNavigate } from "react-router";
 import Swal from "sweetalert2";
 import { motion } from "framer-motion";
 import { AuthContext } from "../Context/AuthProvider";
-import axios from "axios";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
 import { Helmet } from "react-helmet-async";
 
@@ -26,7 +25,7 @@ const UpdateBlogs = () => {
           title: "Update!",
           icon: "success",
           draggable: true,
-        });
+        }); 
         navigate("/allBlogs");
       }
     });

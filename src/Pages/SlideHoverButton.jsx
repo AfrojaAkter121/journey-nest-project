@@ -14,7 +14,7 @@ const SlideHoverButton = ({ link, text }) => {
           `relative z-10 px-4 py-2 block rounded-full font-semibold transition-colors duration-500 ${
             isActive
               ? "bg-[#c1d443] text-green-950"
-              : "relative z-10 font-semibold transition-colors duration-500 group-hover:text-green-950"
+              : " group-hover:text-green-950"
           }`
         }
       >

@@ -43,9 +43,9 @@ export default function Header() {
       <AnimatePresence>
         <motion.div
           key={slides[current].id}
-          initial={{ opacity: 0, y: 100 }}
+          initial={{ opacity: 1, y: 100 }}
           animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -100 }}
+          // exit={{ opacity: 0, y: -100 }}
           transition={{ duration: 2 }}
           className="absolute inset-0 bg-cover bg-center"
           style={{
@@ -56,7 +56,7 @@ export default function Header() {
 
           <div className="relative z-20 text-white px-6 md:px-20 py-32 h-full flex flex-col justify-center">
             <motion.h1
-              initial={{ y: -80, opacity: 0 }}
+              initial={{ y: -80, opacity: 0.8 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 1, delay: 0.5 }}
               className="text-4xl md:text-5xl font-bold mb-4 italic w-[500px]"
@@ -71,7 +71,7 @@ export default function Header() {
             </motion.h1>
 
             <motion.p
-              initial={{ y: 50, opacity: 0 }}
+              initial={{ y: 50, opacity: 0.8 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 1, delay: 0.8 }}
               className="mb-6 w-[500px]"

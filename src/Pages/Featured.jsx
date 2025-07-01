@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from "react";
 import {
   flexRender,
   getCoreRowModel,
-  getPaginationRowModel,
   getSortedRowModel,
   useReactTable,
 } from "@tanstack/react-table";
